@@ -1,14 +1,19 @@
 require 'test_helper'
 
 class CalculatorViewTest < ActionDispatch::IntegrationTest
+  test 'shows the current life points of player one' do
+    get calculator_url
+    assert_select 'p#player-one-lp'
+  end
+
   test 'the life points of player one is not empty' do
     get calculator_url
     assert_select 'p#player-one-lp', /\A[+-]?\d+?(_?\d+)*(\.\d+e?\d*)?\Z/
   end
 
-  test 'shows the current life points of player one' do
+  test 'the life points of player one begins with 8000' do
     get calculator_url
-    assert_select 'p#player-one-lp'
+    assert_select 'p#player-one-lp', '8000'
   end
 
   test 'shows a button to decrease life points of player one by 1000' do

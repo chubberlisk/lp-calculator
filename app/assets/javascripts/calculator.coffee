@@ -6,4 +6,7 @@ $ ->
   $("button[data-lp-minus]").click (e) ->
     currentLp = $("p#player-one-lp").html()
     currentLp -= $(this).data("lp-minus")
-    if currentLp >= 0 then $("p#player-one-lp").html(currentLp)
+    if currentLp > 0
+      $("p#player-one-lp").html(currentLp)
+    else
+      $("p#player-one-lp").html(0)

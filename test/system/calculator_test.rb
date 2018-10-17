@@ -50,4 +50,13 @@ class CalculatorTest < ApplicationSystemTestCase
       assert_text '0', options={:exact => true}
     end
   end
+
+  test 'the life points of player one equals 0 when a button value is more than current life points' do
+    visit calculator_url
+    page.execute_script('$("p#player-one-lp").html(500)')
+    click_button '- 1000'
+    within('p#player-one-lp') do
+      assert_text '0', options={:exact => true}
+    end
+  end
 end

@@ -1,6 +1,7 @@
 require 'application_system_test_case'
 
 class CalculatorTest < ApplicationSystemTestCase
+  # Reducing life points of player one
   test 'can reduce the life points of player one by 1000' do
     visit calculator_url
     click_button '- 1000'
@@ -57,6 +58,18 @@ class CalculatorTest < ApplicationSystemTestCase
     click_button '- 1000'
     within('p#player-one-lp') do
       assert_text '0', options={:exact => true}
+    end
+  end
+
+  # Resetting life points of player one
+  test 'can reset the life points of player one to 8000' do
+    visit calculator_url
+    page.execute_script('$("p#player-one-lp").html(7000)')
+    accept_confirm do
+      click_button 'Reset'
+    end
+    within('p#player-one-lp') do
+      assert_text '8000', options={:exact => true}
     end
   end
 end

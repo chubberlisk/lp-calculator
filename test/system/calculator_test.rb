@@ -72,4 +72,13 @@ class CalculatorTest < ApplicationSystemTestCase
       assert_text '8000', options={:exact => true}
     end
   end
+
+  # Increasing life points of player one
+  # test 'can increase life points of player one by 1000' do
+  #   visit calculator_url
+  #   click_button '+ 1000'
+  #   within('p#player-one-lp') do
+  #     assert_text '9000', options={:exact => true}
+  #   end
+  # end
 end

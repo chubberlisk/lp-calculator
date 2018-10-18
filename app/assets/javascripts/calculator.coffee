@@ -10,3 +10,7 @@ $ ->
       $("p#player-one-lp").html(currentLp)
     else
       $("p#player-one-lp").html(0)
+
+  $("button#lp-reset").click (e) ->
+    if confirm "Are you sure you want to reset life points?"
+      $("p#player-one-lp").html(8000)

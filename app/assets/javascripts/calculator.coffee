@@ -35,4 +35,13 @@ $(document).on "turbolinks:load", ->
     $("p#player-two-lp").html(currentLp)
 
   $("button#add-player-two").click (e) ->
-    $("div#player-two-section").css('display', 'block')
+    $("button#add-player-two").css("display", "none")
+    $("button#remove-player-two").css("display", "block")
+    $("div#player-two-section").css("display", "block")
+    $("p#player-two-lp").html(8000)
+
+  $("button#remove-player-two").click (e) ->
+    if confirm "Are you sure you want to remove Player Two?"
+      $("button#remove-player-two").css("display", "none")
+      $("button#add-player-two").css("display", "block")
+      $("div#player-two-section").css("display", "none")

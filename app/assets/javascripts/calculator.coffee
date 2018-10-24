@@ -4,6 +4,28 @@
 
 $(document).on "turbolinks:load", ->
   # Player one
+  $("button#player-one-show-lp-btns").click (e) ->
+    if $(this).hasClass("minus")
+      $("p#player-one-lp-plus-btns").css("display", "none")
+      $("p#player-one-lp-minus-btns").css("display", "inline-block")
+      $(this).html("+")
+    else
+      $("p#player-one-lp-minus-btns").css("display", "none")
+      $("p#player-one-lp-plus-btns").css("display", "inline-block")
+      $(this).html("-")
+    $(this).toggleClass("minus")
+
+  $("button#player-two-show-lp-btns").click (e) ->
+    if $(this).hasClass("minus")
+      $("p#player-two-lp-plus-btns").css("display", "none")
+      $("p#player-two-lp-minus-btns").css("display", "inline-block")
+      $(this).html("+")
+    else
+      $("p#player-two-lp-minus-btns").css("display", "none")
+      $("p#player-two-lp-plus-btns").css("display", "inline-block")
+      $(this).html("-")
+    $(this).toggleClass("minus")
+
   $("button.player-one-lp-minus").click (e) ->
     lpChange = $("p#player-one-lp-change").html()
     lpChange -= $(this).data("lp-minus")

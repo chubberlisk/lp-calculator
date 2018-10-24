@@ -52,6 +52,7 @@ class ConfirmingLpPlayerTwoTest < ApplicationSystemTestCase
   test 'can see 1000 life points to increase of player two before confirming' do
     visit calculator_url
     find('button#add-player-two').click
+    find('button#player-two-show-lp-btns').click
     find('button#player-two-lp-plus-one-thousand').click
     within('p#player-two-lp-change') do
       assert_text '+1000', options={:exact => true}
@@ -61,6 +62,7 @@ class ConfirmingLpPlayerTwoTest < ApplicationSystemTestCase
   test 'can see 1610 life points to increase of player two before confirming' do
     visit calculator_url
     find('button#add-player-two').click
+    find('button#player-two-show-lp-btns').click
     find('button#player-two-lp-plus-one-thousand').click
     find('button#player-two-lp-plus-five-hundred').click
     find('button#player-two-lp-plus-one-hundred').click
@@ -73,6 +75,7 @@ class ConfirmingLpPlayerTwoTest < ApplicationSystemTestCase
   test 'can cancel life points to increase of player two' do
     visit calculator_url
     find('button#add-player-two').click
+    find('button#player-two-show-lp-btns').click
     find('button#player-two-lp-plus-one-thousand').click
     find('button#player-two-lp-cancel').click
     assert_no_selector 'p#player-two-lp-change'
@@ -81,6 +84,7 @@ class ConfirmingLpPlayerTwoTest < ApplicationSystemTestCase
   test 'can confirm life points to increase of player two' do
     visit calculator_url
     find('button#add-player-two').click
+    find('button#player-two-show-lp-btns').click
     find('button#player-two-lp-plus-one-thousand').click
     find('button#player-two-lp-confirm').click
     within('p#player-two-lp') do

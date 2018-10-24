@@ -44,6 +44,7 @@ class DecreasingLpPlayerTwoTest < ApplicationSystemTestCase
 
   test 'the life points of player two equals 0 when -1000 is clicked 8 times' do
     visit calculator_url
+    find('button#add-player-two').click
     for i in 0..7 do
       find('button#player-two-lp-minus-one-thousand').click
       find('button#player-two-lp-confirm').click
@@ -55,6 +56,7 @@ class DecreasingLpPlayerTwoTest < ApplicationSystemTestCase
 
   test 'the life points of player two equals 0 when -1000 is clicked 9 times' do
     visit calculator_url
+    find('button#add-player-two').click
     for i in 0..8 do
       find('button#player-two-lp-minus-one-thousand').click
       find('button#player-two-lp-confirm').click
@@ -66,8 +68,9 @@ class DecreasingLpPlayerTwoTest < ApplicationSystemTestCase
 
   test 'the life points of player two equals 0 when a button value is more than current life points' do
     visit calculator_url
+    find('button#add-player-two').click
     page.execute_script('$("p#player-two-lp").html(500)')
-    find('button#player-two-lp-minus-two-thousand').click
+    find('button#player-two-lp-minus-one-thousand').click
     find('button#player-two-lp-confirm').click
     within('p#player-two-lp') do
       assert_text '0', options={:exact => true}

@@ -4,13 +4,25 @@
 
 $(document).on "turbolinks:load", ->
   $("button.player-one-lp-minus").click (e) ->
+    lpChange = $("p#player-one-lp-change").html()
+    lpChange -= $(this).data("lp-minus")
+    $("div#player-one-lp-change-section").css("display", "inline-block")
+    $("p#player-one-lp-change").html(lpChange)
+  
+  $("button#player-one-lp-cancel").click (e) ->
+    $("p#player-one-lp-change").html(0)
+    $("div#player-one-lp-change-section").css("display", "none")
+  
+  $("button#player-one-lp-confirm").click (e) ->
     currentLp = $("p#player-one-lp").html()
-    currentLp -= $(this).data("lp-minus")
+    currentLp -= Math.abs($("p#player-one-lp-change").html())
     if currentLp > 0
       $("p#player-one-lp").html(currentLp)
     else
       $("p#player-one-lp").html(0)
-
+    $("p#player-one-lp-change").html(0)
+    $("div#player-one-lp-change-section").css("display", "none")
+  
   $("button#lp-reset").click (e) ->
     if confirm "Are you sure you want to reset life points?"
       $("p#player-one-lp").html(8000)

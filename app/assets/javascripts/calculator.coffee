@@ -29,6 +29,21 @@ cancelLpChange = (player) ->
   $("p#player-"+player+"-lp-change").html(0)
   $("div#player-"+player+"-lp-change-section").css("display", "none")
 
+confirmLpChange = (player) ->
+  currentLp = parseInt($("p#player-"+player+"-lp").html())
+  if $("p#player-"+player+"-lp-change").html() < 0
+    currentLp -= Math.abs($("p#player-"+player+"-lp-change").html())
+    if currentLp > 0
+      $("p#player-"+player+"-lp").html(currentLp)
+    else
+      $("p#player-"+player+"-lp").html(0)
+  else
+    currentLp += parseInt($("p#player-"+player+"-lp-change").html())
+    $("p#player-"+player+"-lp").html(currentLp)
+  $("p#player-"+player+"-lp-change").html(0)
+  $("div#player-"+player+"-lp-change-section").css("display", "none")
+
+
 $(document).on "turbolinks:load", ->
   $("button#player-one-show-lp-btns").click (e) ->
     showLpBtns("one")
@@ -55,32 +70,10 @@ $(document).on "turbolinks:load", ->
     cancelLpChange("two")
 
   $("button#player-one-lp-confirm").click (e) ->
-    currentLp = parseInt($("p#player-one-lp").html())
-    if $("p#player-one-lp-change").html() < 0
-      currentLp -= Math.abs($("p#player-one-lp-change").html())
-      if currentLp > 0
-        $("p#player-one-lp").html(currentLp)
-      else
-        $("p#player-one-lp").html(0)
-    else
-      currentLp += parseInt($("p#player-one-lp-change").html())
-      $("p#player-one-lp").html(currentLp)
-    $("p#player-one-lp-change").html(0)
-    $("div#player-one-lp-change-section").css("display", "none")
+    confirmLpChange("one")
   
   $("button#player-two-lp-confirm").click (e) ->
-    currentLp = parseInt($("p#player-two-lp").html())
-    if $("p#player-two-lp-change").html() < 0
-      currentLp -= Math.abs($("p#player-two-lp-change").html())
-      if currentLp > 0
-        $("p#player-two-lp").html(currentLp)
-      else
-        $("p#player-two-lp").html(0)
-    else
-      currentLp += parseInt($("p#player-two-lp-change").html())
-      $("p#player-two-lp").html(currentLp)
-    $("p#player-two-lp-change").html(0)
-    $("div#player-two-lp-change-section").css("display", "none")
+    confirmLpChange("two")
 
 
   $("button#lp-reset").click (e) ->

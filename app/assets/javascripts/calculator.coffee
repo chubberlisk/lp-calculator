@@ -13,6 +13,12 @@ showLpBtns = (player) ->
     $("button#player-"+player+"-show-lp-btns").html("-")
   $("button#player-"+player+"-show-lp-btns").toggleClass("minus")
 
+minusLpChange = (player, element) ->
+  lpChange = $("p#player-"+player+"-lp-change").html()
+  lpChange -= $(element).data("lp-minus")
+  $("div#player-"+player+"-lp-change-section").css("display", "inline-block")
+  $("p#player-"+player+"-lp-change").html(lpChange)
+
 $(document).on "turbolinks:load", ->
   $("button#player-one-show-lp-btns").click (e) ->
     showLpBtns("one")
@@ -21,11 +27,11 @@ $(document).on "turbolinks:load", ->
     showLpBtns("two")
 
   $("button.player-one-lp-minus").click (e) ->
-    lpChange = $("p#player-one-lp-change").html()
-    lpChange -= $(this).data("lp-minus")
-    $("div#player-one-lp-change-section").css("display", "inline-block")
-    $("p#player-one-lp-change").html(lpChange)
+    minusLpChange("one", this)
   
+  $("button.player-two-lp-minus").click (e) ->
+    minusLpChange("two", this)
+
   $("button.player-one-lp-plus").click (e) ->
     lpChange = parseInt($("p#player-one-lp-change").html())
     lpChange += parseInt($(this).data("lp-plus"))
@@ -55,11 +61,7 @@ $(document).on "turbolinks:load", ->
       $("p#player-one-lp").html(8000)
       $("p#player-two-lp").html(8000)
 
-  $("button.player-two-lp-minus").click (e) ->
-    lpChange = $("p#player-two-lp-change").html()
-    lpChange -= $(this).data("lp-minus")
-    $("div#player-two-lp-change-section").css("display", "inline-block")
-    $("p#player-two-lp-change").html(lpChange)
+
 
   $("button#player-two-lp-cancel").click (e) ->
     $("p#player-two-lp-change").html(0)

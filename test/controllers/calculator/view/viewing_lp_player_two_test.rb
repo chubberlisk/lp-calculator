@@ -4,6 +4,7 @@ class ViewingLpPlayerTwoTest < ActionDispatch::IntegrationTest
   # Viewing life points of player two
   test 'shows the current life points of player two' do
     get calculator_url
+    assert_select 'h2#player-two', 1
     assert_select 'p#player-two-lp', 1
   end
 

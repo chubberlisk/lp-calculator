@@ -2,29 +2,23 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+showLpBtns = (player) ->
+  if $("button#player-"+player+"-show-lp-btns").hasClass("minus")
+    $("p#player-"+player+"-lp-plus-btns").css("display", "none")
+    $("p#player-"+player+"-lp-minus-btns").css("display", "inline-block")
+    $("button#player-"+player+"-show-lp-btns").html("+")
+  else
+    $("p#player-"+player+"-lp-minus-btns").css("display", "none")
+    $("p#player-"+player+"-lp-plus-btns").css("display", "inline-block")
+    $("button#player-"+player+"-show-lp-btns").html("-")
+  $("button#player-"+player+"-show-lp-btns").toggleClass("minus")
+
 $(document).on "turbolinks:load", ->
-  # Player one
   $("button#player-one-show-lp-btns").click (e) ->
-    if $(this).hasClass("minus")
-      $("p#player-one-lp-plus-btns").css("display", "none")
-      $("p#player-one-lp-minus-btns").css("display", "inline-block")
-      $(this).html("+")
-    else
-      $("p#player-one-lp-minus-btns").css("display", "none")
-      $("p#player-one-lp-plus-btns").css("display", "inline-block")
-      $(this).html("-")
-    $(this).toggleClass("minus")
+    showLpBtns("one")
 
   $("button#player-two-show-lp-btns").click (e) ->
-    if $(this).hasClass("minus")
-      $("p#player-two-lp-plus-btns").css("display", "none")
-      $("p#player-two-lp-minus-btns").css("display", "inline-block")
-      $(this).html("+")
-    else
-      $("p#player-two-lp-minus-btns").css("display", "none")
-      $("p#player-two-lp-plus-btns").css("display", "inline-block")
-      $(this).html("-")
-    $(this).toggleClass("minus")
+    showLpBtns("two")
 
   $("button.player-one-lp-minus").click (e) ->
     lpChange = $("p#player-one-lp-change").html()
@@ -61,7 +55,6 @@ $(document).on "turbolinks:load", ->
       $("p#player-one-lp").html(8000)
       $("p#player-two-lp").html(8000)
 
-  # Player two
   $("button.player-two-lp-minus").click (e) ->
     lpChange = $("p#player-two-lp-change").html()
     lpChange -= $(this).data("lp-minus")

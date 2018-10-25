@@ -13,17 +13,15 @@ showLpBtns = (player) ->
     $("button#player-"+player+"-show-lp-btns").html("-")
   $("button#player-"+player+"-show-lp-btns").toggleClass("minus")
 
-minusLpChange = (player, element) ->
-  lpChange = $("p#player-"+player+"-lp-change").html()
-  lpChange -= $(element).data("lp-minus")
+showlpChange = (player, element, operator) ->
+  lpChange = parseInt($("p#player-"+player+"-lp-change").html())
+  if operator == "minus"
+    lpChange -= $(element).data("lp-minus")
+  else
+    lpChange += parseInt($(element).data("lp-plus"))
+    lpChange = "+" + lpChange
   $("div#player-"+player+"-lp-change-section").css("display", "inline-block")
   $("p#player-"+player+"-lp-change").html(lpChange)
-
-plusLpChange = (player, element) ->
-  lpChange = parseInt($("p#player-"+player+"-lp-change").html())
-  lpChange += parseInt($(element).data("lp-plus"))
-  $("div#player-"+player+"-lp-change-section").css("display", "inline-block")
-  $("p#player-"+player+"-lp-change").html("+"+lpChange)
 
 cancelLpChange = (player) ->
   $("p#player-"+player+"-lp-change").html(0)
@@ -43,7 +41,6 @@ confirmLpChange = (player) ->
   $("p#player-"+player+"-lp-change").html(0)
   $("div#player-"+player+"-lp-change-section").css("display", "none")
 
-
 $(document).on "turbolinks:load", ->
   $("button#player-one-show-lp-btns").click (e) ->
     showLpBtns("one")
@@ -52,16 +49,16 @@ $(document).on "turbolinks:load", ->
     showLpBtns("two")
 
   $("button.player-one-lp-minus").click (e) ->
-    minusLpChange("one", this)
+    showlpChange("one", this, "minus")
   
   $("button.player-two-lp-minus").click (e) ->
-    minusLpChange("two", this)
+    showlpChange("two", this, "minus")
 
   $("button.player-one-lp-plus").click (e) ->
-    plusLpChange("one", this)
+    showlpChange("one", this, "plus")
 
   $("button.player-two-lp-plus").click (e) ->
-    plusLpChange("two", this)
+    showlpChange("two", this, "plus")
 
   $("button#player-one-lp-cancel").click (e) ->
     cancelLpChange("one")
@@ -75,20 +72,19 @@ $(document).on "turbolinks:load", ->
   $("button#player-two-lp-confirm").click (e) ->
     confirmLpChange("two")
 
-
   $("button#lp-reset").click (e) ->
     if confirm "Are you sure you want to reset life points?"
       $("p#player-one-lp").html(8000)
       $("p#player-two-lp").html(8000)
 
   $("button#add-player-two").click (e) ->
-    $("button#add-player-two").css("display", "none")
+    $(this).css("display", "none")
     $("button#remove-player-two").css("display", "inline-block")
     $("div#player-two-section").css("display", "inline-block")
     $("p#player-two-lp").html(8000)
 
   $("button#remove-player-two").click (e) ->
     if confirm "Are you sure you want to remove Player Two?"
-      $("button#remove-player-two").css("display", "none")
+      $(this).css("display", "none")
       $("button#add-player-two").css("display", "inline-block")
       $("div#player-two-section").css("display", "none")

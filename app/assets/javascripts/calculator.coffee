@@ -25,6 +25,10 @@ plusLpChange = (player, element) ->
   $("div#player-"+player+"-lp-change-section").css("display", "inline-block")
   $("p#player-"+player+"-lp-change").html("+"+lpChange)
 
+cancelLpChange = (player) ->
+  $("p#player-"+player+"-lp-change").html(0)
+  $("div#player-"+player+"-lp-change-section").css("display", "none")
+
 $(document).on "turbolinks:load", ->
   $("button#player-one-show-lp-btns").click (e) ->
     showLpBtns("one")
@@ -44,11 +48,12 @@ $(document).on "turbolinks:load", ->
   $("button.player-two-lp-plus").click (e) ->
     plusLpChange("two", this)
 
-
   $("button#player-one-lp-cancel").click (e) ->
-    $("p#player-one-lp-change").html(0)
-    $("div#player-one-lp-change-section").css("display", "none")
+    cancelLpChange("one")
   
+  $("button#player-two-lp-cancel").click (e) ->
+    cancelLpChange("two")
+
   $("button#player-one-lp-confirm").click (e) ->
     currentLp = parseInt($("p#player-one-lp").html())
     if $("p#player-one-lp-change").html() < 0
@@ -63,17 +68,6 @@ $(document).on "turbolinks:load", ->
     $("p#player-one-lp-change").html(0)
     $("div#player-one-lp-change-section").css("display", "none")
   
-  $("button#lp-reset").click (e) ->
-    if confirm "Are you sure you want to reset life points?"
-      $("p#player-one-lp").html(8000)
-      $("p#player-two-lp").html(8000)
-
-
-
-  $("button#player-two-lp-cancel").click (e) ->
-    $("p#player-two-lp-change").html(0)
-    $("div#player-two-lp-change-section").css("display", "none")
-
   $("button#player-two-lp-confirm").click (e) ->
     currentLp = parseInt($("p#player-two-lp").html())
     if $("p#player-two-lp-change").html() < 0
@@ -87,6 +81,12 @@ $(document).on "turbolinks:load", ->
       $("p#player-two-lp").html(currentLp)
     $("p#player-two-lp-change").html(0)
     $("div#player-two-lp-change-section").css("display", "none")
+
+
+  $("button#lp-reset").click (e) ->
+    if confirm "Are you sure you want to reset life points?"
+      $("p#player-one-lp").html(8000)
+      $("p#player-two-lp").html(8000)
 
   $("button#add-player-two").click (e) ->
     $("button#add-player-two").css("display", "none")

@@ -30,6 +30,17 @@ class ConfirmingLpPlayerTwoTest < ApplicationSystemTestCase
     end
   end
 
+  test 'stops value to decrease if equal to current life points of player two' do
+    visit calculator_url
+    find('button#add-player-two').click
+    for i in 0..8 do
+      find('button#player-two-lp-minus-one-thousand').click
+    end
+    within('p#player-two-lp-change') do
+      assert_text '-8000', options={:exact => true}
+    end
+  end
+
   test 'can cancel life points to decrease of player two' do
     visit calculator_url
     find('button#add-player-two').click

@@ -42,6 +42,8 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
     visit calculator_url
     for i in 0..7 do
       find('button#player-one-lp-minus-one-thousand').click
+    end
+    dismiss_confirm do
       find('button#player-one-lp-confirm').click
     end
     within('p#player-one-lp') do
@@ -53,6 +55,8 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
     visit calculator_url
     for i in 0..8 do
       find('button#player-one-lp-minus-one-thousand').click
+    end
+    dismiss_confirm do
       find('button#player-one-lp-confirm').click
     end
     within('p#player-one-lp') do
@@ -64,7 +68,9 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
     visit calculator_url
     page.execute_script('$("p#player-one-lp").html(500)')
     find('button#player-one-lp-minus-one-thousand').click
-    find('button#player-one-lp-confirm').click
+    dismiss_confirm do
+      find('button#player-one-lp-confirm').click
+    end
     within('p#player-one-lp') do
       assert_text '0', options={:exact => true}
     end

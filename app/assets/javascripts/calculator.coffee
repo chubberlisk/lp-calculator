@@ -16,7 +16,8 @@ showLpBtns = (player) ->
 showlpChange = (player, element, operator) ->
   lpChange = parseInt($("p#player-"+player+"-lp-change").html())
   if operator == "minus"
-    lpChange -= $(element).data("lp-minus")
+    if Math.abs(lpChange) != parseInt($("p#player-"+player+"-lp").html())
+      lpChange -= $(element).data("lp-minus")
   else
     lpChange += parseInt($(element).data("lp-plus"))
     lpChange = "+" + lpChange
@@ -35,6 +36,9 @@ confirmLpChange = (player) ->
       $("p#player-"+player+"-lp").html(currentLp)
     else
       $("p#player-"+player+"-lp").html(0)
+      if confirm "Player #{player}'s life points have been reduced to 0! Do you want to reset life points?"
+        $("p#player-one-lp").html(8000)
+        $("p#player-two-lp").html(8000)
   else
     currentLp += parseInt($("p#player-"+player+"-lp-change").html())
     $("p#player-"+player+"-lp").html(currentLp)

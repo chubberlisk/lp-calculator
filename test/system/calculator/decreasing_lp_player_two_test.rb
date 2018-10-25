@@ -47,6 +47,8 @@ class DecreasingLpPlayerTwoTest < ApplicationSystemTestCase
     find('button#add-player-two').click
     for i in 0..7 do
       find('button#player-two-lp-minus-one-thousand').click
+    end
+    dismiss_confirm do
       find('button#player-two-lp-confirm').click
     end
     within('p#player-two-lp') do
@@ -59,6 +61,8 @@ class DecreasingLpPlayerTwoTest < ApplicationSystemTestCase
     find('button#add-player-two').click
     for i in 0..8 do
       find('button#player-two-lp-minus-one-thousand').click
+    end
+    dismiss_confirm do
       find('button#player-two-lp-confirm').click
     end
     within('p#player-two-lp') do
@@ -71,7 +75,9 @@ class DecreasingLpPlayerTwoTest < ApplicationSystemTestCase
     find('button#add-player-two').click
     page.execute_script('$("p#player-two-lp").html(500)')
     find('button#player-two-lp-minus-one-thousand').click
-    find('button#player-two-lp-confirm').click
+    dismiss_confirm do
+      find('button#player-two-lp-confirm').click
+    end
     within('p#player-two-lp') do
       assert_text '0', options={:exact => true}
     end

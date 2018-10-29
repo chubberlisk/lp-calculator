@@ -1,9 +1,8 @@
-require 'test_helper'
+require 'controllers/calculator/calculator_test'
 
-class AddingPlayerTwoTest < ActionDispatch::IntegrationTest
+class AddingPlayerTwoTest < CalculatorTest
   # Adding player two
   test 'shows button to add another player' do
-    get calculator_url
     assert_select 'button#add-player-two', 1
   end
 end

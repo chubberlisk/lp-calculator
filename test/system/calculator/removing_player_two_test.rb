@@ -1,10 +1,8 @@
-require 'application_system_test_case'
+require 'system/calculator/player_two_test'
 
-class RemovingPlayerTwoTest < ApplicationSystemTestCase
+class RemovingPlayerTwoTest < PlayerTwoTest
   # Removing player two
   test 'can remove player two' do
-    visit calculator_url
-    find('button#add-player-two').click
     accept_confirm do
       find('button#remove-player-two').click
     end

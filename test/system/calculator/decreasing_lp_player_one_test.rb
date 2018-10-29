@@ -1,9 +1,8 @@
-require 'application_system_test_case'
+require 'system/calculator/player_one_test'
 
-class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
+class DecreasingLpPlayerOneTest < PlayerOneTest
   # Decreasing life points of player one
   test 'can reduce the life points of player one by 1000' do
-    visit calculator_url
     find('button#player-one-lp-minus-one-thousand').click
     find('button#player-one-lp-confirm').click
     within('p#player-one-lp') do
@@ -12,7 +11,6 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'can reduce the life points of player one by 500' do
-    visit calculator_url
     find('button#player-one-lp-minus-five-hundred').click
     find('button#player-one-lp-confirm').click
     within('p#player-one-lp') do
@@ -21,7 +19,6 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'can reduce the life points of player one by 100' do
-    visit calculator_url
     find('button#player-one-lp-minus-one-hundred').click
     find('button#player-one-lp-confirm').click
     within('p#player-one-lp') do
@@ -30,7 +27,6 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'can reduce the life points of player one by 10' do
-    visit calculator_url
     find('button#player-one-lp-minus-ten').click
     find('button#player-one-lp-confirm').click
     within('p#player-one-lp') do
@@ -39,7 +35,6 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'the life points of player one equals 0 when -1000 is clicked 8 times' do
-    visit calculator_url
     for i in 0..7 do
       find('button#player-one-lp-minus-one-thousand').click
     end
@@ -52,7 +47,6 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'the life points of player one equals 0 when -1000 is clicked 9 times' do
-    visit calculator_url
     for i in 0..8 do
       find('button#player-one-lp-minus-one-thousand').click
     end
@@ -65,7 +59,6 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'the life points of player one equals 0 when a button value is more than current life points' do
-    visit calculator_url
     page.execute_script('$("p#player-one-lp").html(500)')
     find('button#player-one-lp-minus-one-thousand').click
     dismiss_confirm do

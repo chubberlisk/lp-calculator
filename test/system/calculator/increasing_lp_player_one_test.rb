@@ -1,6 +1,6 @@
-require 'application_system_test_case'
+require 'system/calculator/player_one_test'
 
-class IncreasingLpPlayerOneTest < ApplicationSystemTestCase
+class IncreasingLpPlayerOneTest < PlayerOneTest
   # Increasing life points of player one
   test 'can increase life points of player one by 1000' do
     visit calculator_url

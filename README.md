@@ -14,9 +14,16 @@ A life points (LP) calculator for Yu-Gi-Oh!
 
 ### `feature/*`
 - A new feature is created under their own branch using the following naming
-  convention: `feature/<feature-name>`.
+  convention: `feature/<feature_name>`.
 - A feature branch is created from the `master` branch.
 - Once the feature is completed, a pull request must be made to add to the
+  `master` branch.
+
+### `refactor/*`
+- A feature that is refactored is created under their own branch using the 
+  following naming convention: `refactor/<version tag>_<feature_name>`
+- A refactor branch is created from the `master` branch.
+- Once the refactor is completed, a pull request must be made to add to the
   `master` branch.
 
 ## Releases

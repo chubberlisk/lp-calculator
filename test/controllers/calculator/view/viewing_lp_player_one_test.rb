@@ -1,7 +1,11 @@
-require 'controllers/calculator/calculator_test'
+require 'test_helper'
 
-class ViewingLpPlayerOneTest < CalculatorTest
+class ViewingLpPlayerOneTest < ActionDispatch::IntegrationTest
   # Viewing life points of player one
+  def setup
+    get calculator_url
+  end
+
   test 'shows the current life points of player one' do
     assert_select 'h2#player-one', 1
     assert_select 'p#player-one-lp', 1

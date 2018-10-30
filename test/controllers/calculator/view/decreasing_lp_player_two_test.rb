@@ -1,7 +1,11 @@
-require 'controllers/calculator/calculator_test'
+require 'test_helper'
 
-class DecreasingLpPlayerTwoTest < CalculatorTest
+class DecreasingLpPlayerTwoTest < ActionDispatch::IntegrationTest
   # Decreasing life points of player two
+  def setup
+    get calculator_url
+  end
+
   test 'shows a button to decrease life points of player two by 1000' do
     assert_select 'button#player-two-lp-minus-one-thousand[data-lp-minus="1000"]'
   end

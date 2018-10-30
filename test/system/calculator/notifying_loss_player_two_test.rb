@@ -1,8 +1,8 @@
-require 'system/calculator/player_two_test'
+require 'application_system_test_case'
 
-class NotifyingLossPlayerTwoTest < PlayerTwoTest
+class NotifyingLossPlayerTwoTest < ApplicationSystemTestCase
   # Notifying loss of player two
-  test 'can reset life points when player two has lost' do
+  def setup
     visit calculator_url
     find('button#add-player-two').click
     find('button#player-two-lp-minus-five-hundred').click
@@ -10,6 +10,9 @@ class NotifyingLossPlayerTwoTest < PlayerTwoTest
     for i in 0..7 do
       find('button#player-two-lp-minus-one-thousand').click
     end
+  end
+
+  test 'can reset life points when player two has lost' do
     accept_confirm do
       find('button#player-two-lp-confirm').click
     end
@@ -19,13 +22,6 @@ class NotifyingLossPlayerTwoTest < PlayerTwoTest
   end
 
   test 'can see life points when player two has lost' do
-    visit calculator_url
-    find('button#add-player-two').click
-    find('button#player-two-lp-minus-five-hundred').click
-    find('button#player-two-lp-confirm').click
-    for i in 0..7 do
-      find('button#player-two-lp-minus-one-thousand').click
-    end
     dismiss_confirm do
       find('button#player-two-lp-confirm').click
     end

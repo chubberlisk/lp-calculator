@@ -1,7 +1,12 @@
-require 'system/calculator/player_two_test'
+require 'application_system_test_case'
 
-class ConfirmingLpPlayerTwoTest < PlayerTwoTest
+class ConfirmingLpPlayerTwoTest < ApplicationSystemTestCase
   # Confirming change in life points of player two
+  def setup
+    visit calculator_url
+    find('button#add-player-two').click
+  end
+
   # Decreasing life points of player two
   test 'cannot see amount of life points to decrease of player two on load' do
     assert_no_selector 'div#player-two-lp-change-section'

@@ -1,7 +1,11 @@
-require 'system/calculator/player_one_test'
+require 'application_system_test_case'
 
-class AddingPlayerTwoTest < PlayerOneTest
+class AddingPlayerTwoTest < ApplicationSystemTestCase
   # Adding player two
+  def setup
+    visit calculator_url
+  end
+
   test 'can add player two' do
     assert_no_selector 'button#remove-player-two'
     find('button#add-player-two').click

@@ -1,7 +1,12 @@
-require 'system/calculator/player_two_test'
+require 'application_system_test_case'
 
-class ShowingPlayerTwoBtnsTest < PlayerTwoTest
+class ShowingPlayerTwoBtnsTest < ApplicationSystemTestCase
   # Showing buttons to decrease life points of player one
+  def setup
+    visit calculator_url
+    find('button#add-player-two').click
+  end
+
   test 'can see buttons to increase life points of player two' do
     find('button#player-two-show-lp-btns').click
     assert_selector 'button#player-two-lp-plus-one-thousand', count: 1

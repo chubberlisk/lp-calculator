@@ -1,7 +1,12 @@
-require 'system/calculator/player_two_test'
+require 'application_system_test_case'
 
-class DecreasingLpPlayerTwoTest < PlayerTwoTest
+class DecreasingLpPlayerTwoTest < ApplicationSystemTestCase
   # Decreasing life points of player two
+  def setup
+    visit calculator_url
+    find('button#add-player-two').click
+  end
+
   test 'can reduce the life points of player two by 1000' do
     find('button#player-two-lp-minus-one-thousand').click
     find('button#player-two-lp-confirm').click

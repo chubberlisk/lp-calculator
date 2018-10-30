@@ -1,7 +1,11 @@
-require 'system/calculator/player_one_test'
+require 'application_system_test_case'
 
-class ConfirmingLpPlayerOneTest < PlayerOneTest
+class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
   # Confirming change in life points of player one
+  def setup
+    visit calculator_url
+  end
+
   # Decreasing life points of player one
   test 'cannot see amount of life points to decrease of player one on load' do
     assert_no_selector 'div#player-one-lp-change-section'

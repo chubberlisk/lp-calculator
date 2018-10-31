@@ -33,15 +33,15 @@ confirmLpChange = (player) ->
   if $("p#player-"+player+"-lp-change").html() < 0
     currentLp -= Math.abs($("p#player-"+player+"-lp-change").html())
     if currentLp > 0
-      $("p#player-"+player+"-lp").html(currentLp)
+      $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 500);
     else
-      $("p#player-"+player+"-lp").html(0)
+      $("p#player-"+player+"-lp").animateNumbers(0, false, 500);
       if confirm "Player #{player}'s life points have been reduced to 0! Do you want to reset life points?"
-        $("p#player-one-lp").html(8000)
-        $("p#player-two-lp").html(8000)
+        $("p#player-one-lp").animateNumbers(8000, false, 500);
+        $("p#player-two-lp").animateNumbers(8000, false, 500);
   else
     currentLp += parseInt($("p#player-"+player+"-lp-change").html())
-    $("p#player-"+player+"-lp").html(currentLp)
+    $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 500);
   $("p#player-"+player+"-lp-change").html(0)
   $("div#player-"+player+"-lp-change-section").css("display", "none")
 
@@ -78,14 +78,14 @@ $(document).on "turbolinks:load", ->
 
   $("button#lp-reset").click (e) ->
     if confirm "Are you sure you want to reset life points?"
-      $("p#player-one-lp").html(8000)
-      $("p#player-two-lp").html(8000)
+      $("p#player-one-lp").animateNumbers(8000, false, 500);
+      $("p#player-two-lp").animateNumbers(8000, false, 500);
 
   $("button#add-player-two").click (e) ->
     $(this).css("display", "none")
     $("button#remove-player-two").css("display", "inline-block")
     $("div#player-two-section").css("display", "inline-block")
-    $("p#player-two-lp").html(8000)
+    $("p#player-two-lp").animateNumbers(8000, false, 500);
 
   $("button#remove-player-two").click (e) ->
     if confirm "Are you sure you want to remove Player Two?"

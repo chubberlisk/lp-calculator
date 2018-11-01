@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // div#player-one-section, div#player-two-section {
-//   background-image: radial-gradient(white, #6fa8dcff);;
+//   background-image: radial-gradient(white, #6fa8dcff);
 // }
-
-#calculator {
+div#calculator {
+  background-image: radial-gradient(#d9edffff, #6fa8dcff);
   height: 100vh;
   position: relative;
   display: flex;
@@ -36,10 +36,10 @@ p#player-one-lp, p#player-two-lp {
   font-style: italic;
   color: yellow;
   text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+    -0.5px -0.5px 0 #000,
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+    0.5px 0.5px 0 #000;
 }
 
 div#player-one-lp-btns-toolbar, div#player-two-lp-btns-toolbar {

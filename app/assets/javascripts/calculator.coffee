@@ -20,7 +20,8 @@ showlpChange = (player, element, operator) ->
   lpChange = parseInt($("span#player-"+player+"-lp-change").html())
   currentLp = parseInt($("p#player-"+player+"-lp").html())
   if operator == "minus"
-    if Math.abs($(element).data("lp-minus")) > currentLp || Math.abs(lpChange) == currentLp
+    btnAmount = Math.abs($(element).data("lp-minus"))
+    if btnAmount > currentLp || Math.abs(lpChange) + btnAmount > currentLp
       lpChange = "-" + currentLp
     else
       lpChange -= $(element).data("lp-minus")
@@ -50,7 +51,7 @@ confirmLpChange = (player) ->
       $("p#player-"+player+"-lp").html(0);
       if confirm "Player #{player}'s life points have been reduced to 0! Do you want to reset life points?"
         resetLp()
-        
+
   else
     currentLp += parseInt($("span#player-"+player+"-lp-change").html())
     $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 500);
@@ -66,7 +67,7 @@ $(document).on "turbolinks:load", ->
 
   $("button.player-one-lp-minus").click (e) ->
     showlpChange("one", this, "minus")
-  
+
   $("button.player-two-lp-minus").click (e) ->
     showlpChange("two", this, "minus")
 
@@ -78,13 +79,13 @@ $(document).on "turbolinks:load", ->
 
   $("button#player-one-lp-cancel").click (e) ->
     cancelLpChange("one")
-  
+
   $("button#player-two-lp-cancel").click (e) ->
     cancelLpChange("two")
 
   $("button#player-one-lp-confirm").click (e) ->
     confirmLpChange("one")
-  
+
   $("button#player-two-lp-confirm").click (e) ->
     confirmLpChange("two")
 

@@ -1,17 +1,19 @@
-<div id="calculator" class="container">
-  <div class="row text-center">
-    <%= render :partial => "player", :locals => { :player => "one" } %>
-    <%= render :partial => "player", :locals => { :player => "two" } %>
-  </div>
-  <div class="row text-center">
-    <div class="col">
-      <p>
-        <button id="lp-reset" class="btn btn-warning">Reset</button>
-      </p>
-      <p>
-        <button id="add-player-two" class="btn btn-info">Add Player Two</button>
-        <button id="remove-player-two" class="btn btn-info">Remove Player Two</button>
-      </p>
+<div id="calculator">  
+  <div class="container">
+    <div class="row text-center">
+      <%= render :partial => "player", :locals => { :player => "one" } %>
+      <%= render :partial => "player", :locals => { :player => "two" } %>
+    </div>
+    <div class="row text-center">
+      <div class="col">
+        <p>
+          <button id="lp-reset" class="btn btn-warning">Reset</button>
+        </p>
+        <p>
+          <button id="add-player-two" class="btn btn-info">Add Player Two</button>
+          <button id="remove-player-two" class="btn btn-info">Remove Player Two</button>
+        </p>
+      </div>
     </div>
   </div>
 </div>

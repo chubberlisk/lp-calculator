@@ -13,7 +13,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
 
   test 'can see 1000 life points to decrease of player one before confirming' do
     find('button#player-one-lp-minus-one-thousand').click
-    within('p#player-one-lp-change') do
+    within('span#player-one-lp-change') do
       assert_text '-1000', options={:exact => true}
     end
   end
@@ -23,7 +23,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
     find('button#player-one-lp-minus-five-hundred').click
     find('button#player-one-lp-minus-one-hundred').click
     find('button#player-one-lp-minus-ten').click
-    within('p#player-one-lp-change') do
+    within('span#player-one-lp-change') do
       assert_text '-1610', options={:exact => true}
     end
   end
@@ -32,7 +32,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
     for i in 0..8 do
       find('button#player-one-lp-minus-one-thousand').click
     end
-    within('p#player-one-lp-change') do
+    within('span#player-one-lp-change') do
       assert_text '-8000', options={:exact => true}
     end
   end
@@ -40,7 +40,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
   test 'can cancel life points to decrease of player one' do
     find('button#player-one-lp-minus-one-thousand').click
     find('button#player-one-lp-cancel').click
-    assert_no_selector 'p#player-one-lp-change'
+    assert_no_selector 'span#player-one-lp-change'
   end
 
   test 'can confirm life points to decrease of player one' do
@@ -55,7 +55,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
   test 'can see 1000 life points to increase of player one before confirming' do
     find('button#player-one-show-lp-btns').click
     find('button#player-one-lp-plus-one-thousand').click
-    within('p#player-one-lp-change') do
+    within('span#player-one-lp-change') do
       assert_text '+1000', options={:exact => true}
     end
   end
@@ -66,7 +66,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
     find('button#player-one-lp-plus-five-hundred').click
     find('button#player-one-lp-plus-one-hundred').click
     find('button#player-one-lp-plus-ten').click
-    within('p#player-one-lp-change') do
+    within('span#player-one-lp-change') do
       assert_text '+1610', options={:exact => true}
     end
   end
@@ -75,7 +75,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
     find('button#player-one-show-lp-btns').click
     find('button#player-one-lp-plus-one-thousand').click
     find('button#player-one-lp-cancel').click
-    assert_no_selector 'p#player-one-lp-change'
+    assert_no_selector 'span#player-one-lp-change'
   end
 
   test 'can confirm life points to increase of player one' do

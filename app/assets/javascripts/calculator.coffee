@@ -4,46 +4,58 @@
 
 showLpBtns = (player) ->
   if $("button#player-"+player+"-show-lp-btns").hasClass("minus")
-    $("p#player-"+player+"-lp-plus-btns").css("display", "none")
-    $("p#player-"+player+"-lp-minus-btns").css("display", "inline-block")
-    $("button#player-"+player+"-show-lp-btns").html("+")
+    $("div#player-"+player+"-lp-plus-btns").css("display", "none")
+    $("div#player-"+player+"-lp-minus-btns").css("display", "inline-flex")
+    $("button#player-"+player+"-show-lp-btns").removeClass("btn-success")
+    $("button#player-"+player+"-show-lp-btns").html("<i class='fas fa-plus'></i>")
   else
-    $("p#player-"+player+"-lp-minus-btns").css("display", "none")
-    $("p#player-"+player+"-lp-plus-btns").css("display", "inline-block")
-    $("button#player-"+player+"-show-lp-btns").html("-")
+    $("div#player-"+player+"-lp-minus-btns").css("display", "none")
+    $("div#player-"+player+"-lp-plus-btns").css("display", "inline-flex")
+    $("button#player-"+player+"-show-lp-btns").html("<i class='fas fa-minus'></i>")
   $("button#player-"+player+"-show-lp-btns").toggleClass("minus")
+  $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
+  $("span#player-"+player+"-lp-change").html(0)
 
 showlpChange = (player, element, operator) ->
-  lpChange = parseInt($("p#player-"+player+"-lp-change").html())
+  lpChange = parseInt($("span#player-"+player+"-lp-change").html())
+  currentLp = parseInt($("p#player-"+player+"-lp").html())
   if operator == "minus"
-    if Math.abs(lpChange) != parseInt($("p#player-"+player+"-lp").html())
+    if Math.abs($(element).data("lp-minus")) > currentLp || Math.abs(lpChange) == currentLp
+      lpChange = "-" + currentLp
+    else
       lpChange -= $(element).data("lp-minus")
   else
     lpChange += parseInt($(element).data("lp-plus"))
     lpChange = "+" + lpChange
-  $("div#player-"+player+"-lp-change-section").css("display", "inline-block")
-  $("p#player-"+player+"-lp-change").html(lpChange)
+  $("div#player-"+player+"-lp-change-section").css("visibility", "visible")
+  $("span#player-"+player+"-lp-change").html(lpChange)
 
 cancelLpChange = (player) ->
-  $("p#player-"+player+"-lp-change").html(0)
-  $("div#player-"+player+"-lp-change-section").css("display", "none")
+  $("span#player-"+player+"-lp-change").html(0)
+  $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
+
+resetLp = ->
+  $("p#player-one-lp").animateNumbers(8000, false, 500);
+  $("p#player-two-lp").animateNumbers(8000, false, 500);
+  $("div#player-one-lp-change-section").css("visibility", "hidden")
+  $("div#player-two-lp-change-section").css("visibility", "hidden")
 
 confirmLpChange = (player) ->
   currentLp = parseInt($("p#player-"+player+"-lp").html())
-  if $("p#player-"+player+"-lp-change").html() < 0
-    currentLp -= Math.abs($("p#player-"+player+"-lp-change").html())
+  if $("span#player-"+player+"-lp-change").html() < 0
+    currentLp -= Math.abs($("span#player-"+player+"-lp-change").html())
     if currentLp > 0
       $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 500);
     else
-      $("p#player-"+player+"-lp").animateNumbers(0, false, 500);
+      $("p#player-"+player+"-lp").html(0);
       if confirm "Player #{player}'s life points have been reduced to 0! Do you want to reset life points?"
-        $("p#player-one-lp").animateNumbers(8000, false, 500);
-        $("p#player-two-lp").animateNumbers(8000, false, 500);
+        resetLp()
+        
   else
-    currentLp += parseInt($("p#player-"+player+"-lp-change").html())
+    currentLp += parseInt($("span#player-"+player+"-lp-change").html())
     $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 500);
-  $("p#player-"+player+"-lp-change").html(0)
-  $("div#player-"+player+"-lp-change-section").css("display", "none")
+  $("span#player-"+player+"-lp-change").html(0)
+  $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
 
 $(document).on "turbolinks:load", ->
   $("button#player-one-show-lp-btns").click (e) ->
@@ -78,8 +90,7 @@ $(document).on "turbolinks:load", ->
 
   $("button#lp-reset").click (e) ->
     if confirm "Are you sure you want to reset life points?"
-      $("p#player-one-lp").animateNumbers(8000, false, 500);
-      $("p#player-two-lp").animateNumbers(8000, false, 500);
+      resetLp()
 
   $("button#add-player-two").click (e) ->
     $(this).css("display", "none")

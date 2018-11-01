@@ -6,11 +6,24 @@
 //   background-image: radial-gradient(white, #6fa8dcff);;
 // }
 
-div#player-one-lp-change-section, div#player-two-lp-change-section {
-  display: none;
+body {
+  font-family: "Times New Roman", Times, serif;
 }
 
-p#player-one-lp-plus-btns, p#player-two-lp-plus-btns {
+#calculator {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div#player-one-lp-change-section, div#player-two-lp-change-section {
+  visibility: hidden;
+  margin-bottom: 1rem; 
+}
+
+div#player-one-lp-plus-btns, div#player-two-lp-plus-btns {
   display: none;
 }
 
@@ -23,7 +36,6 @@ button#remove-player-two {
 }
 
 p#player-one-lp, p#player-two-lp {
-  font-family: "Times New Roman", Times, serif;
   font-size: 5rem;
   font-style: italic;
   color: yellow;
@@ -32,4 +44,15 @@ p#player-one-lp, p#player-two-lp {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+}
+
+div#player-one-lp-btns-toolbar, div#player-two-lp-btns-toolbar {
+  justify-content: center;
+  margin-bottom: 1rem; 
+}
+
+span#player-one-lp-change, span#player-two-lp-change {
+  display: inline-block;
+  width: 5rem;
+  padding: 0.5rem;
 }

@@ -1,68 +1,19 @@
-<div class="container">
-  <div class="row text-center">
-    <div id="player-one-section" class="col">
-      <h2 id="player-one">Player One</h2>
-      <p id="player-one-lp">8000</p>
-      <div id="player-one-lp-change-section">
-        <p id="player-one-lp-change">0</p>
+<div id="calculator">  
+  <div class="container">
+    <div class="row text-center">
+      <%= render :partial => "player", :locals => { :player => "one" } %>
+      <%= render :partial => "player", :locals => { :player => "two" } %>
+    </div>
+    <div class="row text-center">
+      <div class="col">
         <p>
-          <button id="player-one-lp-cancel">Cancel</button>
-          <button id="player-one-lp-confirm">Confirm</button>
+          <button id="lp-reset" class="btn btn-warning">Reset</button>
+        </p>
+        <p>
+          <button id="add-player-two" class="btn btn-info">Add Player Two</button>
+          <button id="remove-player-two" class="btn btn-info">Remove Player Two</button>
         </p>
       </div>
-      <p>
-        <button id="player-one-show-lp-btns">+</button>
-      </p>
-      <p id="player-one-lp-minus-btns">
-        <button id="player-one-lp-minus-one-thousand" data-lp-minus="1000" class="player-one-lp-minus">-1000</button>
-        <button id="player-one-lp-minus-five-hundred" data-lp-minus="500" class="player-one-lp-minus">-500</button>
-        <button id="player-one-lp-minus-one-hundred" data-lp-minus="100" class="player-one-lp-minus">-100</button>
-        <button id="player-one-lp-minus-ten" data-lp-minus="10" class="player-one-lp-minus">-10</button>
-      </p>
-      <p id="player-one-lp-plus-btns">
-        <button id="player-one-lp-plus-one-thousand" data-lp-plus="1000" class="player-one-lp-plus">+1000</button>
-        <button id="player-one-lp-plus-five-hundred" data-lp-plus="500" class="player-one-lp-plus">+500</button>
-        <button id="player-one-lp-plus-one-hundred" data-lp-plus="100" class="player-one-lp-plus">+100</button>
-        <button id="player-one-lp-plus-ten" data-lp-plus="10" class="player-one-lp-plus">+10</button>
-      </p>
-    </div>
-    <div id="player-two-section" class="col">
-      <h2 id="player-two">Player Two</h2>
-      <p id="player-two-lp">8000</p>
-      <div id="player-two-lp-change-section">
-        <p id="player-two-lp-change">0</p>
-        <p>
-          <button id="player-two-lp-cancel">Cancel</button>
-          <button id="player-two-lp-confirm">Confirm</button>
-        </p>
-      </div>
-      <p>
-        <button id="player-two-show-lp-btns">+</button>
-      </p>
-      <p id="player-two-lp-minus-btns">
-        <button id="player-two-lp-minus-one-thousand" data-lp-minus="1000" class="player-two-lp-minus">-1000</button>
-        <button id="player-two-lp-minus-five-hundred" data-lp-minus="500" class="player-two-lp-minus">-500</button>
-        <button id="player-two-lp-minus-one-hundred" data-lp-minus="100" class="player-two-lp-minus">-100</button>
-        <button id="player-two-lp-minus-ten" data-lp-minus="10" class="player-two-lp-minus">-10</button>
-      </p>
-      <p id="player-two-lp-plus-btns">
-        <button id="player-two-lp-plus-one-thousand" data-lp-plus="1000" class="player-two-lp-plus">+1000</button>
-        <button id="player-two-lp-plus-five-hundred" data-lp-plus="500" class="player-two-lp-plus">+500</button>
-        <button id="player-two-lp-plus-one-hundred" data-lp-plus="100" class="player-two-lp-plus">+100</button>
-        <button id="player-two-lp-plus-ten" data-lp-plus="10" class="player-two-lp-plus">+10</button>
-      </p>
-    </div>
-  </div>
-  <div class="row text-center">
-    <div class="col">
-      <p>
-        <button id="lp-reset">Reset</button>
-      </p>
-
-      <p>
-        <button id="add-player-two">Add Player Two</button>
-        <button id="remove-player-two">Remove Player Two</button>
-      </p>
     </div>
   </div>
 </div>

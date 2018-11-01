@@ -1,0 +1,26 @@
+<div id="player-<%= player %>-section" class="col">
+  <h2 id="player-<%= player %>"><b>PLAYER <%= player.upcase %></b></h2>
+  <p id="player-<%= player %>-lp">8000</p>
+  <div id="player-<%= player %>-lp-change-section">
+    <button id="player-<%= player %>-lp-cancel" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
+    <span id="player-<%= player %>-lp-change">0</span>
+    <button id="player-<%= player %>-lp-confirm" type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
+  </div>
+  <div id="player-<%= player %>-lp-btns-toolbar" class="btn-toolbar justify-content-center" role="toolbar" aria-label="Player <%= player.capitalize %> Life Points Buttons">
+    <div id="player-<%= player %>-lp-minus-btns" class="btn-group mr-2" role="group" aria-label="Player <%= player.capitalize %> Minus Life Points Buttons">
+      <button id="player-<%= player %>-lp-minus-one-thousand" data-lp-minus="1000" class="btn btn-danger player-<%= player %>-lp-minus" type="button">-1000</button>
+      <button id="player-<%= player %>-lp-minus-five-hundred" data-lp-minus="500" class="btn btn-danger player-<%= player %>-lp-minus" type="button">-500</button>
+      <button id="player-<%= player %>-lp-minus-one-hundred" data-lp-minus="100" class="btn btn-danger player-<%= player %>-lp-minus" type="button">-100</button>
+      <button id="player-<%= player %>-lp-minus-ten" data-lp-minus="10" class="btn btn-danger player-<%= player %>-lp-minus" type="button">-10</button>
+    </div>
+    <div id="player-<%= player %>-lp-plus-btns" class="btn-group mr-2" role="group" aria-label="Player <%= player.capitalize %> Plus Life Points Buttons">
+      <button id="player-<%= player %>-lp-plus-one-thousand" data-lp-plus="1000" class="btn btn-success player-<%= player %>-lp-plus" type="button">+1000</button>
+      <button id="player-<%= player %>-lp-plus-five-hundred" data-lp-plus="500" class="btn btn-success player-<%= player %>-lp-plus" type="button">+500</button>
+      <button id="player-<%= player %>-lp-plus-one-hundred" data-lp-plus="100" class="btn btn-success player-<%= player %>-lp-plus" type="button">+100</button>
+      <button id="player-<%= player %>-lp-plus-ten" data-lp-plus="10" class="btn btn-success player-<%= player %>-lp-plus" type="button">+10</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Player <%= player.capitalize %> Toggle Life Points Buttons">
+      <button id="player-<%= player %>-show-lp-btns" class="btn btn-primary" type="button"><i class="fas fa-plus"></i></button>
+    </div>
+  </div>
+</div>

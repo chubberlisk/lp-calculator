@@ -63,7 +63,10 @@ class DecreasingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'the life points of player one equals 0 when a button value is more than current life points' do
-    page.execute_script('$("p#player-one-lp").html(500)')
+    for i in 0..6 do
+      find('button#player-one-lp-minus-one-thousand').click
+    end
+    find('button#player-one-lp-minus-five-hundred').click
     find('button#player-one-lp-minus-one-thousand').click
     dismiss_confirm do
       find('button#player-one-lp-confirm').click

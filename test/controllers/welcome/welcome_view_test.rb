@@ -6,10 +6,10 @@ class WelcomeViewTest < ActionDispatch::IntegrationTest
   end
 
   test 'shows link to calculator' do
-    assert_select 'a', 'Calculator'
+    assert_select 'a'
   end
 
   test 'shows link to calculator with href to calculator page' do
-    assert_select 'a[href="/calculator"]', 'Calculator'
+    assert_select 'a[href="/calculator"]'
   end
 end

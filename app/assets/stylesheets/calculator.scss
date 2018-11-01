@@ -6,10 +6,6 @@
 //   background-image: radial-gradient(white, #6fa8dcff);;
 // }
 
-body {
-  font-family: "Times New Roman", Times, serif;
-}
-
 #calculator {
   height: 100vh;
   position: relative;
@@ -20,7 +16,7 @@ body {
 
 div#player-one-lp-change-section, div#player-two-lp-change-section {
   visibility: hidden;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 
 div#player-one-lp-plus-btns, div#player-two-lp-plus-btns {
@@ -48,7 +44,7 @@ p#player-one-lp, p#player-two-lp {
 
 div#player-one-lp-btns-toolbar, div#player-two-lp-btns-toolbar {
   justify-content: center;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 
 span#player-one-lp-change, span#player-two-lp-change {

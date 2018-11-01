@@ -1,7 +1,7 @@
 <div id="calculator" class="container">
   <div class="row text-center">
-    <%= render "player_one" %>
-    <%= render "player_two" %>
+    <%= render :partial => "player", :locals => { :player => "one" } %>
+    <%= render :partial => "player", :locals => { :player => "two" } %>
   </div>
   <div class="row text-center">
     <div class="col">

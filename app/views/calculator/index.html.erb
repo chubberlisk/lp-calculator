@@ -1,5 +1,6 @@
-<div id="calculator">  
+<section id="calculator">
   <div class="container">
+    <%= audio_tag "points_change.mp3", id: "points-change" %>
     <div class="row text-center">
       <%= render :partial => "player", :locals => { :player => "one" } %>
       <%= render :partial => "player", :locals => { :player => "two" } %>
@@ -16,4 +17,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

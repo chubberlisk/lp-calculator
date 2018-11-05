@@ -36,8 +36,11 @@ cancelLpChange = (player) ->
   $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
 
 resetLp = ->
-  $("p#player-one-lp").animateNumbers(8000, false, 500);
-  $("p#player-two-lp").animateNumbers(8000, false, 500);
+  playPointsChange()
+  $("p#player-one-lp").html(0) if $("p#player-one-lp").html() == "8000"
+  $("p#player-two-lp").html(0) if $("p#player-two-lp").html() == "8000"
+  $("p#player-one-lp").animateNumbers(8000, false, 1000);
+  $("p#player-two-lp").animateNumbers(8000, false, 1000);
   $("div#player-one-lp-change-section").css("visibility", "hidden")
   $("div#player-two-lp-change-section").css("visibility", "hidden")
 
@@ -46,17 +49,25 @@ confirmLpChange = (player) ->
   if $("span#player-"+player+"-lp-change").html() < 0
     currentLp -= Math.abs($("span#player-"+player+"-lp-change").html())
     if currentLp > 0
-      $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 500);
+      playPointsChange()
+      $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 1000);
     else
-      $("p#player-"+player+"-lp").html(0);
       if confirm "Player #{player}'s life points have been reduced to 0! Do you want to reset life points?"
         resetLp()
-
+      else
+        playPointsChange()
+        $("p#player-"+player+"-lp").animateNumbers(0, false, 1000);
   else
     currentLp += parseInt($("span#player-"+player+"-lp-change").html())
-    $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 500);
+    playPointsChange()
+    $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 1000);
   $("span#player-"+player+"-lp-change").html(0)
   $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
+
+playPointsChange = ->
+  $("audio#points-change")[0].playbackRate = 1.5
+  $("audio#points-change")[0].currentTime = 1
+  $("audio#points-change")[0].play()
 
 $(document).on "turbolinks:load", ->
   $("button#player-one-show-lp-btns").click (e) ->

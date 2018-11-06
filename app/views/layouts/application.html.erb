@@ -4,11 +4,15 @@
     <title>LP Calculator</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="manifest" href="/manifest.json"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Personal website for Ting.">
+    <meta name="theme-color" content="#6fa8dcff">
+    <%= favicon_link_tag '/images/icons/icon-512x512.png', type: 'image/png' %>
     <meta name="apple-mobile-web-app-capable" content="yes"></head>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="/manifest.json"/>
 
   <body>
     <%= yield %>

@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 section#calculator {
-  background-image: radial-gradient(#d9edffff, #6fa8dcff);
   min-height: 100vh;
   position: relative;
   display: flex;
@@ -28,15 +27,15 @@ button#remove-player-two {
   display: none;
 }
 
+h2#player-one, h2#player-two {
+  font-weight: lighter;
+  color: var(--cyan);
+}
+
 p#player-one-lp, p#player-two-lp {
   font-size: 5rem;
-  font-style: italic;
-  color: yellow;
-  text-shadow:
-    -0.5px -0.5px 0 #000,
-    0.5px -0.5px 0 #000,
-    -0.5px 0.5px 0 #000,
-    0.5px 0.5px 0 #000;
+  font-weight: bold;
+  color: #BA38DF;
 }
 
 div#player-one-lp-btns-toolbar, div#player-two-lp-btns-toolbar {
@@ -48,4 +47,5 @@ span#player-one-lp-change, span#player-two-lp-change {
   display: inline-block;
   width: 5rem;
   padding: 0.5rem;
+  color: white;
 }

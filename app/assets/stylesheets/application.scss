@@ -16,6 +16,7 @@
 @import "font-awesome";
 @import "calculator";
 @import "welcome";
+@import "snackbar";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
@@ -23,46 +24,17 @@ body {
   background-color: black;
 }
 
-#snackbar {
-  visibility: hidden;
-  color: white;
-  text-align: center;
-  border-radius: 2px;
-  padding: 2vh;
-  position: fixed;
-  z-index: 2;
-  bottom: 2.5vh;
-  margin-left: 2.5vh;
+/* Extra small devices */
+@media only screen and (max-width: 320px) {
+
 }
 
-#snackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+/* Small devices */
+@media only screen and (min-width: 321px) {
+
 }
 
-#snackbar.perm-show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s;
-  animation: fadein 0.5s;
-}
+/* Medium devices */
+@media only screen and (min-width: 768px) {
 
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 2.5vh; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 2.5vh; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {bottom: 2.5vh; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 2.5vh; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
 }

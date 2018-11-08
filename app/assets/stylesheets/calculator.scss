@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 section#calculator {
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -12,14 +12,9 @@ section#calculator {
 
 div#player-one-lp-change-section, div#player-two-lp-change-section {
   visibility: hidden;
-  margin-bottom: 1rem;
 }
 
 div#player-one-lp-plus-btns, div#player-two-lp-plus-btns {
-  display: none;
-}
-
-div#player-two-section {
   display: none;
 }
 
@@ -33,14 +28,13 @@ h2#player-one, h2#player-two {
 }
 
 p#player-one-lp, p#player-two-lp {
-  font-size: 5rem;
   font-weight: bold;
   color: #BA38DF;
+  margin-bottom: 0;
 }
 
-div#player-one-lp-btns-toolbar, div#player-two-lp-btns-toolbar {
+div#player-one-lp-btns-toolbar, div#player-two-lp-btns-toolbar, div#duel-btns-toolbar {
   justify-content: center;
-  margin-bottom: 1rem;
 }
 
 span#player-one-lp-change, span#player-two-lp-change {
@@ -48,4 +42,45 @@ span#player-one-lp-change, span#player-two-lp-change {
   width: 5rem;
   padding: 0.5rem;
   color: white;
+}
+
+/* Extra small devices */
+@media only screen and (max-width: 320px) {
+  p#player-one-lp, p#player-two-lp {
+    font-size: 4rem;
+  }
+
+  section#calculator button {
+    font-size: 0.7rem;
+  }
+
+  div#player-one-lp-change-section, div#player-two-lp-change-section {
+    margin-bottom: 0.5rem;
+  }
+
+  div#player-one-section, div#player-two-section {
+    height: 45vh;
+    display: flex;
+    align-items: center;
+  }
+
+  div#player-two-section {
+    display: none;
+  }
+
+  div#duel-btns-section {
+    height: 10vh;
+    display: flex;
+    align-items: center
+  }
+}
+
+/* Small devices */
+@media only screen and (min-width: 321px) {
+
+}
+
+/* Medium devices */
+@media only screen and (min-width: 768px) {
+
 }

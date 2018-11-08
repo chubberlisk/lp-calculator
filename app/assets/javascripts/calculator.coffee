@@ -107,11 +107,13 @@ $(document).on "turbolinks:load", ->
   $("button#add-player-two").click (e) ->
     $(this).css("display", "none")
     $("button#remove-player-two").css("display", "inline-block")
-    $("div#player-two-section").css("display", "inline-block")
-    $("p#player-two-lp").animateNumbers(8000, false, 500);
+    $("div#player-two-section").css("display", "flex")
+    $("div#player-one-section, div#player-two-section").css("border", "1px solid #dee2e6")
+    $("p#player-two-lp").animateNumbers(8000, false, 500)
 
   $("button#remove-player-two").click (e) ->
     if confirm "Are you sure you want to remove Player Two?"
       $(this).css("display", "none")
       $("button#add-player-two").css("display", "inline-block")
       $("div#player-two-section").css("display", "none")
+      $("div#player-one-section, div#player-two-section").css("border", "none")

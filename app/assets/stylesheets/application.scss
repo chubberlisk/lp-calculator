@@ -24,17 +24,51 @@ body {
   background-color: black;
 }
 
+.jumbotron h1 {
+  color: #BA38DF;
+}
+
+.jumbotron a i {
+  margin-right: 0.5em;
+}
+
+.jumbotron .btn {
+  margin-bottom: 0.5em;
+}
+
 /* Extra small devices */
 @media only screen and (max-width: 320px) {
+  .jumbotron h1 {
+    font-size: 2.5rem;
+  }
 
+  .jumbotron p, .jumbotron .btn {
+    font-size: 1rem;
+  }
 }
 
 /* Small devices */
 @media only screen and (min-width: 321px) {
+  .jumbotron h1 {
+    font-size: 3.5rem;
+  }
 
+  .jumbotron p {
+    font-size: 1.25rem;
+  }
+
+  .jumbotron .btn {
+    font-size: 1rem;
+  }
 }
 
 /* Medium devices */
 @media only screen and (min-width: 768px) {
+  .jumbotron h1 {
+    font-size: 4.5rem;
+  }
 
+  .jumbotron .jumbotron p {
+    font-size: 1.5rem;
+  }
 }

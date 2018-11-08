@@ -3,18 +3,14 @@
     <%= audio_tag "points_change.mp3", id: "points-change" %>
     <div class="row text-center">
       <%= render :partial => "player", :locals => { :player => "one" } %>
-      <%= render :partial => "player", :locals => { :player => "two" } %>
-    </div>
-    <div class="row text-center">
-      <div class="col">
-        <p>
-          <button id="lp-reset" class="btn btn-warning">Reset</button>
-        </p>
-        <p>
-          <button id="add-player-two" class="btn btn-info">Add Player Two</button>
-          <button id="remove-player-two" class="btn btn-info">Remove Player Two</button>
-        </p>
+        <div id="duel-btns-section" class="col-12 col-lg-2">
+          <div class="container">
+            <button id="lp-reset" class="btn btn-warning"><i class="fas fa-redo"></i></button>
+            <button id="add-player-two" class="btn btn-info"><i class="fas fa-user-plus"></i></button>
+            <button id="remove-player-two" class="btn btn-info"><i class="fas fa-user-minus"></i></button>
+          </div>
       </div>
+      <%= render :partial => "player", :locals => { :player => "two" } %>
     </div>
   </div>
 </section>

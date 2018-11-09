@@ -114,8 +114,8 @@ $(document).on "turbolinks:load", ->
   $("button#add-player-two").click (e) ->
     $(this).css("display", "none")
     $("button#remove-player-two").css("display", "inline-block")
-    $("div#player-one-section, div#player-two-section").addClass("col-lg-5")
-    $("div#duel-btns-section").addClass("col-lg-2")
+    $("div#player-one-section, div#player-two-section").addClass("col-lg-4")
+    $("div#duel-btns-section").addClass("col-lg-4")
     $("div#player-two-section").css("display", "flex")
     $("p#player-two-lp").animateNumbers(8000, false, 500)
 
@@ -124,5 +124,16 @@ $(document).on "turbolinks:load", ->
       $(this).css("display", "none")
       $("button#add-player-two").css("display", "inline-block")
       $("div#player-two-section").css("display", "none")
-      $("div#player-one-section, div#player-two-section").removeClass("col-lg-5")
-      $("div#duel-btns-section").removeClass("col-lg-2")
+      $("div#player-one-section, div#player-two-section").removeClass("col-lg-4")
+      $("div#duel-btns-section").removeClass("col-lg-4")
+
+  $("button#lp-rotate").click (e) ->
+    if $("div#player-one-section .container, div#player-one-section .container").hasClass("rotated")
+      $(this).rotate({angle: 90, animateTo: 0})
+      $("div#player-one-section .container").rotate({angle: 90, animateTo: 0})
+      $("div#player-two-section .container").rotate({angle: -90, animateTo: 0})
+    else
+      $(this).rotate({angle: 0, animateTo: 90})
+      $("div#player-one-section .container").rotate({angle: 0, animateTo: 90})
+      $("div#player-two-section .container").rotate({angle: 0, animateTo: -90})
+    $("div#player-one-section .container, div#player-one-section .container").toggleClass("rotated")

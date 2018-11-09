@@ -70,6 +70,13 @@ playPointsChange = ->
   $("audio#points-change")[0].play()
 
 $(document).on "turbolinks:load", ->
+  $("div#player-one-lp-change-section").css("visibility", "hidden")
+  $("div#player-two-lp-change-section").css("visibility", "hidden")
+  $("div#player-one-lp-plus-btns").css("display", "none")
+  $("div#player-two-lp-plus-btns").css("display", "none")
+  $("button#remove-player-two").css("display", "none")
+  $("div#player-two-section").css("display", "none")
+
   $("button#player-one-show-lp-btns").click (e) ->
     showLpBtns("one")
 
@@ -107,11 +114,15 @@ $(document).on "turbolinks:load", ->
   $("button#add-player-two").click (e) ->
     $(this).css("display", "none")
     $("button#remove-player-two").css("display", "inline-block")
-    $("div#player-two-section").css("display", "inline-block")
-    $("p#player-two-lp").animateNumbers(8000, false, 500);
+    $("div#player-one-section, div#player-two-section").addClass("col-lg-5")
+    $("div#duel-btns-section").addClass("col-lg-2")
+    $("div#player-two-section").css("display", "flex")
+    $("p#player-two-lp").animateNumbers(8000, false, 500)
 
   $("button#remove-player-two").click (e) ->
     if confirm "Are you sure you want to remove Player Two?"
       $(this).css("display", "none")
       $("button#add-player-two").css("display", "inline-block")
       $("div#player-two-section").css("display", "none")
+      $("div#player-one-section, div#player-two-section").removeClass("col-lg-5")
+      $("div#duel-btns-section").removeClass("col-lg-2")

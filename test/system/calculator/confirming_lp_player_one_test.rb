@@ -29,7 +29,7 @@ class ConfirmingLpPlayerOneTest < ApplicationSystemTestCase
   end
 
   test 'stops value to decrease if equal to current life points of player one' do
-    for i in 0..8 do
+    (0..8).each do
       find('button#player-one-lp-minus-one-thousand').click
     end
     within('span#player-one-lp-change') do

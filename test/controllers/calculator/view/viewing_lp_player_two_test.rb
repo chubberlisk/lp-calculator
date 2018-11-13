@@ -7,7 +7,6 @@ class ViewingLpPlayerTwoTest < ActionDispatch::IntegrationTest
   end
 
   test 'shows the current life points of player two' do
-    assert_select 'h2#player-two', 1
     assert_select 'p#player-two-lp', 1
   end
 

@@ -65,9 +65,10 @@ confirmLpChange = (player) ->
   $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
 
 playPointsChange = ->
-  $("audio#points-change")[0].playbackRate = 1.5
-  $("audio#points-change")[0].currentTime = 1
-  $("audio#points-change")[0].play()
+  audio = new Audio("<%= asset_path 'points_change.mp3' %>");
+  $(audio)[0].playbackRate = 1.5
+  $(audio)[0].currentTime = 1
+  $(audio)[0].play()
 
 $(document).on "turbolinks:load", ->
   $("div#player-one-lp-change-section").css("visibility", "hidden")

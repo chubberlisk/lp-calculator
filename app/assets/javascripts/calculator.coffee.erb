@@ -41,7 +41,8 @@ showlpChange = (player, element, operator) ->
     lpChange = "+" + lpChange
   else if operator == "divide"
     lpChange = "-" + (currentLp / 2)
-
+  else
+    lpChange = "+" + currentLp
   $("div#player-"+player+"-lp-change-section").css("visibility", "visible")
   $("span#player-"+player+"-lp-change").html(lpChange)
 
@@ -116,6 +117,12 @@ $(document).on "turbolinks:load", ->
 
   $("button#player-two-lp-divide-two").click (e) ->
     showlpChange("two", this, "divide")
+
+  $("button#player-one-lp-double").click (e) ->
+    showlpChange("one", this, "double")
+
+  $("button#player-two-lp-double").click (e) ->
+    showlpChange("two", this, "double")
 
   $("button#player-one-lp-cancel").click (e) ->
     cancelLpChange("one")

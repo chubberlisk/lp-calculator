@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+pointsChangeAudio = new Audio("<%= asset_path 'points_change.mp3' %>");
+
 showLpBtns = (player) ->
   if $("button#player-"+player+"-show-lp-btns").hasClass("minus")
     $("div#player-"+player+"-lp-plus-btns").css("display", "none")
@@ -65,10 +67,9 @@ confirmLpChange = (player) ->
   $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
 
 playPointsChange = ->
-  audio = new Audio("<%= asset_path 'points_change.mp3' %>");
-  $(audio)[0].playbackRate = 1.5
-  $(audio)[0].currentTime = 1
-  $(audio)[0].play()
+  $(pointsChangeAudio)[0].playbackRate = 1.5
+  $(pointsChangeAudio)[0].currentTime = 1
+  $(pointsChangeAudio)[0].play()
 
 $(document).on "turbolinks:load", ->
   $("div#player-one-lp-change-section").css("visibility", "hidden")

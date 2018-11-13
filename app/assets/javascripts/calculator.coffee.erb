@@ -5,16 +5,25 @@
 pointsChangeAudio = new Audio("<%= asset_path 'points_change.mp3' %>");
 
 showLpBtns = (player) ->
-  if $("button#player-"+player+"-show-lp-btns").hasClass("minus")
+  if $("button#player-"+player+"-show-lp-btns").hasClass("plus")
+    $("div#player-"+player+"-lp-minus-btns").css("display", "none")
+    $("div#player-"+player+"-lp-plus-btns").css("display", "inline-flex")
+    $("button#player-"+player+"-show-lp-btns").html("<i class='fas fa-cogs'></i>")
+    $("button#player-"+player+"-show-lp-btns").removeClass("plus")
+    $("button#player-"+player+"-show-lp-btns").addClass("other")
+  else if $("button#player-"+player+"-show-lp-btns").hasClass("other")
     $("div#player-"+player+"-lp-plus-btns").css("display", "none")
+    $("div#player-"+player+"-lp-other-btns").css("display", "inline-flex")
+    $("button#player-"+player+"-show-lp-btns").html("<i class='fas fa-minus'></i>")
+    $("button#player-"+player+"-show-lp-btns").removeClass("other")
+    $("button#player-"+player+"-show-lp-btns").addClass("minus")
+  else
+    $("div#player-"+player+"-lp-other-btns").css("display", "none")
     $("div#player-"+player+"-lp-minus-btns").css("display", "inline-flex")
     $("button#player-"+player+"-show-lp-btns").removeClass("btn-success")
     $("button#player-"+player+"-show-lp-btns").html("<i class='fas fa-plus'></i>")
-  else
-    $("div#player-"+player+"-lp-minus-btns").css("display", "none")
-    $("div#player-"+player+"-lp-plus-btns").css("display", "inline-flex")
-    $("button#player-"+player+"-show-lp-btns").html("<i class='fas fa-minus'></i>")
-  $("button#player-"+player+"-show-lp-btns").toggleClass("minus")
+    $("button#player-"+player+"-show-lp-btns").removeClass("minus")
+    $("button#player-"+player+"-show-lp-btns").addClass("plus")
   $("div#player-"+player+"-lp-change-section").css("visibility", "hidden")
   $("span#player-"+player+"-lp-change").html(0)
 
@@ -27,9 +36,12 @@ showlpChange = (player, element, operator) ->
       lpChange = "-" + currentLp
     else
       lpChange -= $(element).data("lp-minus")
-  else
+  else if operator == "plus"
     lpChange += parseInt($(element).data("lp-plus"))
     lpChange = "+" + lpChange
+  else if operator == "divide"
+    lpChange = "-" + (currentLp / 2)
+
   $("div#player-"+player+"-lp-change-section").css("visibility", "visible")
   $("span#player-"+player+"-lp-change").html(lpChange)
 
@@ -76,6 +88,8 @@ $(document).on "turbolinks:load", ->
   $("div#player-two-lp-change-section").css("visibility", "hidden")
   $("div#player-one-lp-plus-btns").css("display", "none")
   $("div#player-two-lp-plus-btns").css("display", "none")
+  $("div#player-one-lp-other-btns").css("display", "none")
+  $("div#player-two-lp-other-btns").css("display", "none")
   $("button#remove-player-two").css("display", "none")
   $("div#player-two-section").css("display", "none")
 
@@ -96,6 +110,12 @@ $(document).on "turbolinks:load", ->
 
   $("button.player-two-lp-plus").click (e) ->
     showlpChange("two", this, "plus")
+
+  $("button#player-one-lp-divide-two").click (e) ->
+    showlpChange("one", this, "divide")
+
+  $("button#player-two-lp-divide-two").click (e) ->
+    showlpChange("two", this, "divide")
 
   $("button#player-one-lp-cancel").click (e) ->
     cancelLpChange("one")

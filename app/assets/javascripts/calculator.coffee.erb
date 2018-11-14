@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 pointsChangeAudio = new Audio("<%= asset_path 'points_change.mp3' %>");
+startingLp = 8000
 
 showLpBtns = (player) ->
   if $("button#player-"+player+"-show-lp-btns").hasClass("plus")
@@ -52,10 +53,10 @@ cancelLpChange = (player) ->
 
 resetLp = ->
   playPointsChange()
-  $("p#player-one-lp").html(0) if $("p#player-one-lp").html() == "8000"
-  $("p#player-two-lp").html(0) if $("p#player-two-lp").html() == "8000"
-  $("p#player-one-lp").animateNumbers(8000, false, 1000);
-  $("p#player-two-lp").animateNumbers(8000, false, 1000);
+  $("p#player-one-lp").html(0) if $("p#player-one-lp").html() == startingLp.toString()
+  $("p#player-two-lp").html(0) if $("p#player-two-lp").html() == startingLp.toString()
+  $("p#player-one-lp").animateNumbers(startingLp, false, 1000);
+  $("p#player-two-lp").animateNumbers(startingLp, false, 1000);
   $("div#player-one-lp-change-section").css("visibility", "hidden")
   $("div#player-two-lp-change-section").css("visibility", "hidden")
 
@@ -67,7 +68,7 @@ confirmLpChange = (player) ->
       playPointsChange()
       $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 1000);
     else
-      if confirm "Player #{player}'s life points have been reduced to 0! Do you want to reset life points?"
+      if confirm "This duel has ended! Do you want to reset life points?"
         resetLp()
       else
         playPointsChange()
@@ -146,7 +147,7 @@ $(document).on "turbolinks:load", ->
     $("div#player-one-section, div#player-two-section").addClass("col-lg-4")
     $("div#duel-btns-section").addClass("col-lg-4")
     $("div#player-two-section").css("display", "flex")
-    $("p#player-two-lp").animateNumbers(8000, false, 500)
+    $("p#player-two-lp").animateNumbers(startingLp, false, 500)
 
   $("button#remove-player-two").click (e) ->
     if confirm "Are you sure you want to remove Player Two?"
@@ -159,10 +160,21 @@ $(document).on "turbolinks:load", ->
   $("button#lp-rotate").click (e) ->
     if $("div#player-one-section .container, div#player-one-section .container").hasClass("rotated")
       $(this).rotate({angle: 90, animateTo: 0})
+      $("button#lp-reset").rotate({angle: 90, animateTo: 0})
+      $("button#add-player-two").rotate({angle: 90, animateTo: 0})
+      $("button#remove-player-two").rotate({angle: 90, animateTo: 0})
+      $("button#lp-starting").rotate({angle: 90, animateTo: 0})
       $("div#player-one-section .container").rotate({angle: 90, animateTo: 0})
       $("div#player-two-section .container").rotate({angle: -90, animateTo: 0})
     else
       $(this).rotate({angle: 0, animateTo: 90})
+      $("button#lp-reset").rotate({angle: 0, animateTo: 90})
+      $("button#add-player-two").rotate({angle: 0, animateTo: 90})
+      $("button#remove-player-two").rotate({angle: 0, animateTo: 90})
+      $("button#lp-starting").rotate({angle: 0, animateTo: 90})
       $("div#player-one-section .container").rotate({angle: 0, animateTo: 90})
       $("div#player-two-section .container").rotate({angle: 0, animateTo: -90})
     $("div#player-one-section .container, div#player-one-section .container").toggleClass("rotated")
+
+  $("input[name=lp-starting-radio-options]").change (e) ->
+    startingLp = parseInt(this.value)

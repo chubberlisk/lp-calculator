@@ -1,3 +1,131 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .navbar-dark .navbar-toggler {
+//   border: none;
+// }
+
+a {
+  text-decoration: none !important;
+}
+
+.navbar {
+  padding: 0.25rem 1rem;
+}
+
+a.navbar-brand img {
+  width: 40px;
+}
+
+.jumbotron {
+  margin-bottom: 5vh;
+}
+
+.jumbotron a i {
+  margin-right: 0.5em;
+}
+
+.jumbotron .btn {
+  margin-bottom: 0.5em;
+}
+
+div#features .row {
+  margin-bottom: 5vh;
+}
+
+div#features i {
+  display: block;
+  margin-bottom: 2vh;
+  color: #fff;
+}
+
+footer {
+  margin: 2rem 0 2rem 0;
+}
+
+footer a.social-links {
+  margin-right: 1vw;
+  font-size: 2rem;
+}
+
+footer a.social-links:last-child {
+  margin-right: 0;
+}
+
+footer a img {
+  margin-bottom: 0.5rem;
+}
+
+/* Extra small devices */
+@media only screen and (max-width: 320px) {
+  h4, div#features i {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  .jumbotron h2 {
+    font-size: 1.75rem;
+  }
+
+  p, .jumbotron p, .jumbotron .btn {
+    font-size: 0.8rem;
+  }
+
+  .jumbotron img {
+    width: 175px;
+  }
+}
+
+/* Small devices */
+@media only screen and (min-width: 321px) {
+  h4, div#features i {
+    font-size: 1.75rem;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+  }
+
+  .jumbotron h2 {
+    font-size: 2rem;
+  }
+
+  p, .jumbotron p, .jumbotron .btn {
+    font-size: 0.9rem;
+  }
+
+  .jumbotron img {
+    width: 250px;
+  }
+}
+
+/* Large devices */
+@media only screen and (min-width: 992px) {
+  h4 {
+    font-size: 2rem;
+  }
+
+  div#features i {
+    font-size: 2.75rem;
+  }
+
+  h5 {
+    font-size: 1.75rem;
+  }
+
+  .jumbotron h2 {
+    font-size: 2.5rem;
+  }
+
+  p, .jumbotron p, .jumbotron .btn {
+    font-size: 1rem;
+  }
+
+  .jumbotron img {
+    width: auto;
+  }
+}

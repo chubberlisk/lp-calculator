@@ -13,66 +13,9 @@
  */
 
 @import url('https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cyborg/bootstrap.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover.css');
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import 'calculator';
 @import 'welcome';
 @import 'snackbar';
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-body {
-  font-family: 'Roboto', sans-serif;
-}
-
-.jumbotron h1 {
-  // color: #BA38DF;
-}
-
-.jumbotron a i {
-  margin-right: 0.5em;
-}
-
-.jumbotron .btn {
-  margin-bottom: 0.5em;
-}
-
-/* Extra small devices */
-@media only screen and (max-width: 320px) {
-  .jumbotron h1 {
-    font-size: 2.5rem;
-  }
-
-  .jumbotron p {
-    font-size: 1rem;
-  }
-
-  .jumbotron .btn {
-    font-size: 0.7rem;
-  }
-}
-
-/* Small devices */
-@media only screen and (min-width: 321px) {
-  .jumbotron h1 {
-    font-size: 3.5rem;
-  }
-
-  .jumbotron p {
-    font-size: 1.25rem;
-  }
-
-  .jumbotron .btn {
-    font-size: 1rem;
-  }
-}
-
-/* Large devices */
-@media only screen and (min-width: 992px) {
-  .jumbotron h1 {
-    font-size: 4.5rem;
-  }
-
-  .jumbotron .jumbotron p {
-    font-size: 1.5rem;
-  }
-}

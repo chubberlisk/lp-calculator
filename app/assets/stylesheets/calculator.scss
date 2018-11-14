@@ -36,9 +36,11 @@ div#player-one-section, div#player-two-section, div#duel-btns-section {
   display: flex;
   align-items: center;
 }
+
 div#duel-btns-section {
   padding: 0;
 }
+
 /* Extra small devices */
 @media only screen and (max-width: 320px) {
   p#player-one-lp, p#player-two-lp {

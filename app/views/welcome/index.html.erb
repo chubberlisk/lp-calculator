@@ -1,11 +1,96 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="<%= asset_path 'icons/icon-48x48.png' %>" class="img-fluid" aria-label="LP Calculator Icon">
+      LP Calculator
+    </a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="collapsibleNavbar"> <ul class="navbar-nav"> <li
+    class="nav-item"> <a class="nav-link" href="#">Link</a> </li> <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li> <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li> </ul> </div> -->
+  </div>
+</nav>
+
 <section id="welcome">
-  <div class="jumbotron jumbotron bg-dark text-light">
-    <div class="container">
-      <h1 class="display-4">LP Calculator</h1>
-      <p class="lead">This is a Life Points (LP) Calculator for Yu-Gi-Oh!</p>
-      <hr class="my-4">
-      <a href="/calculator" role="button" class="btn btn-primary"><i class="fas fa-calculator"></i>Go to LP Calculator</a>
-      <a href="https://github.com/chubberlisk/lp_calculator" role="button" class="btn btn-primary"><i class="fab fa-github"></i>GitHub Repository</a>
+  <div class="jumbotron text-center">
+    <div class="container-fluid">
+      <h2># TODO(Wen Ting Wang): Say something
+        <span class="text-success">funny</span>
+        and
+        <span class="text-primary">welcoming</span>.</h2>
+      <p class="lead">A Life Points (LP) Calculator for Yu-Gi-Oh!</p>
+      <img src="<%= asset_path 'reduce_lp.gif' %>" class="img-fluid">
+      <hr class="my-3">
+      <a href="/calculator" role="button" class="btn btn-info">
+        <i class="fas fa-calculator"></i>
+        Go to LP Calculator
+      </a>
+      <a href="https://github.com/chubberlisk/lp_calculator" role="button" class="btn btn-secondary">
+        <i class="fab fa-github"></i>
+        GitHub Repository
+      </a>
+    </div>
+  </div>
+  <div id="features" class="container text-center">
+    <div class="row">
+      <div class="col">
+        <i class="fas fa-calculator hvr-wobble-vertical"></i>
+        <h4>A Life Points Calculator</h4>
+        <p>
+          Who needs paper and a pen anymore? Just enter the amount to reduce or add using the simple buttons and (gently) hit the
+          <span class="text-success">green</span>
+          confirm button!
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-4">
+        <i class="fas fa-edit hvr-wobble-vertical"></i>
+        <h4>Customize Starting LP</h4>
+        <p>
+          By default each player starts a duel with 8000 LP, but if you're speed duelling you can change the starting LP to 4000 or 2000.
+        </p>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <i class="fas fa-mobile hvr-wobble-vertical"></i>
+        <h4>Progressive Web App</h4>
+        <p>
+          It's responsive to different screen sizes, works offline and is installable on your mobile device if you use Mobile Chrome/Android Webview v31+, Firefox for Android v58+ or Opera for Android v32+ as well as on your desktop if use Chrome OS (Chrome
+          v67+), Linux (Chrome v70+) or Windows (Chrome v70+).
+          <small class="text-muted">Mac support for Desktop PWA supposedly
+            <a href="https://developers.google.com/web/progressive-web-apps/desktop">expected</a>
+            to arrive in Chrome v72.</small>
+        </p>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <i class="fas fa-user-plus hvr-wobble-vertical"></i>
+        <h4>1 or 2 Players</h4>
+        <p>
+          Use it on a device for each player or for both players, simply press the add player button. Utilise the rotation feature and place your device between you and your opponent.
+        </p>
+      </div>
     </div>
   </div>
 </section>
+
+<footer>
+  <div class="container text-center">
+    <hr class="bg-secondary">
+    <a href="https://wentingwang.co.uk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Personal Website" data-toggle="tooltip" data-placement="top" title="Wen Ting Wang's Personal Website"><img src="<%= asset_path 'icons/wtw-icon-48x48.png' %>" class="fas align-text-bottom hvr-buzz-out" aria-label="WTW Icon"></a>
+    <h5>Created by Wen Ting Wang</h5>
+    <p>
+      Bacon ipsum dolor amet alcatra tri-tip chuck never gonna give you up, picanha fatback filet mignon buffalo biltong doner. Kielbasa rump chuck shank corned beef prosciutto shoulder filet mignon beef ribs mom's spaghetti. Ham beef ribs burgdoggen biltong. Meatball short
+      ribs hamburger t-bone ground round strip steak.
+    </p>
+    <a href="https://github.com/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's GitHub Profile" data-toggle="tooltip" data-placement="top" title="GitHub - Chubberlisk" class="social-links">
+      <i class="fab fa-github hvr-buzz-out"></i>
+    </a>
+    <a href="https://twitter.com/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Twitter Profile" data-toggle="tooltip" data-placement="top" title="Twitter - Chubberlisk" class="social-links">
+      <i class="fab fa-twitter hvr-buzz-out"></i>
+    </a>
+    <a href="https://www.instagram.com/chubberlisk/" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Instagram Profile" data-toggle="tooltip" data-placement="top" title="Instagram - Chubberlisk" class="social-links">
+      <i class="fab fa-instagram hvr-buzz-out"></i>
+    </a>
+    <a href="https://dev.to/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's DEV Profile" data-toggle="tooltip" data-placement="top" title="Dev.to - Chubberlisk" class="social-links">
+      <i class="fab fa-dev hvr-buzz-out"></i>
+    </a>
+  </div>
+</footer>

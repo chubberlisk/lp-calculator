@@ -37,6 +37,10 @@ div#player-one-section, div#player-two-section, div#duel-btns-section {
   align-items: center;
 }
 
+div#duel-btns-section {
+  padding: 0;
+}
+
 /* Extra small devices */
 @media only screen and (max-width: 320px) {
   p#player-one-lp, p#player-two-lp {
@@ -45,6 +49,11 @@ div#player-one-section, div#player-two-section, div#duel-btns-section {
 
   span#player-one-lp-change, span#player-two-lp-change, section#calculator button {
     font-size: 0.7rem;
+  }
+
+  section#calculator button {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
   }
 
   div#player-one-lp-change-section, div#player-two-lp-change-section {
@@ -64,11 +73,11 @@ div#player-one-section, div#player-two-section, div#duel-btns-section {
 /* Small devices */
 @media only screen and (min-width: 321px) {
   p#player-one-lp, p#player-two-lp {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 
   span#player-one-lp-change, span#player-two-lp-change, section#calculator button {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   div#player-one-lp-change-section, div#player-two-lp-change-section {
@@ -87,11 +96,11 @@ div#player-one-section, div#player-two-section, div#duel-btns-section {
 /* Large devices */
 @media only screen and (min-width: 992px) {
   p#player-one-lp, p#player-two-lp {
-    font-size: 8rem;
+    font-size: 6.5rem;
   }
 
   span#player-one-lp-change, span#player-two-lp-change, section#calculator button {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   div#player-one-lp-change-section, div#player-two-lp-change-section {

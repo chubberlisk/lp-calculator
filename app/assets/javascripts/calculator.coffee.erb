@@ -160,10 +160,18 @@ $(document).on "turbolinks:load", ->
   $("button#lp-rotate").click (e) ->
     if $("div#player-one-section .container, div#player-one-section .container").hasClass("rotated")
       $(this).rotate({angle: 90, animateTo: 0})
+      $("button#lp-reset").rotate({angle: 90, animateTo: 0})
+      $("button#add-player-two").rotate({angle: 90, animateTo: 0})
+      $("button#remove-player-two").rotate({angle: 90, animateTo: 0})
+      $("button#lp-starting").rotate({angle: 90, animateTo: 0})
       $("div#player-one-section .container").rotate({angle: 90, animateTo: 0})
       $("div#player-two-section .container").rotate({angle: -90, animateTo: 0})
     else
       $(this).rotate({angle: 0, animateTo: 90})
+      $("button#lp-reset").rotate({angle: 0, animateTo: 90})
+      $("button#add-player-two").rotate({angle: 0, animateTo: 90})
+      $("button#remove-player-two").rotate({angle: 0, animateTo: 90})
+      $("button#lp-starting").rotate({angle: 0, animateTo: 90})
       $("div#player-one-section .container").rotate({angle: 0, animateTo: 90})
       $("div#player-two-section .container").rotate({angle: 0, animateTo: -90})
     $("div#player-one-section .container, div#player-one-section .container").toggleClass("rotated")

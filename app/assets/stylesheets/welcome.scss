@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .navbar-dark .navbar-toggler {
-//   border: none;
-// }
+.navbar-dark .navbar-toggler {
+  border: none;
+}
 
 a {
   text-decoration: none !important;
@@ -16,10 +16,6 @@ a {
 
 a.navbar-brand img {
   width: 40px;
-}
-
-button#sign-in, span#or {
-  margin-right: 0.5rem;
 }
 
 .jumbotron {
@@ -105,6 +101,13 @@ footer a img {
 
   .jumbotron img {
     width: 250px;
+  }
+}
+
+/* Medium devices */
+@media only screen and (min-width: 768px) {
+  a#sign-in, span#or {
+    margin-right: 0.5rem;
   }
 }
 

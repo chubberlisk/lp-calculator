@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="<%= root_url %>">
       <img src="<%= asset_path 'icons/icon-48x48.png' %>" class="img-fluid" aria-label="LP Calculator Icon">
       LP Calculator
     </a>
@@ -9,9 +9,9 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="nav navbar-nav ml-auto">
-        <button id="sign-in" class="btn btn-outline-success float-right" type="button">Sign In</button>
+        <a href="<%= new_user_session_url %>" id="sign-in" class="btn btn-outline-success float-right">Sign In</a>
         <span id="or" class="navbar-text" style="margin-right: 0.5rem!important">or</span>
-        <button id="sign-up" class="btn btn-outline-primary float-right" type="button">Sign Up</button>
+        <a href="<%= new_user_registration_url %>" id="sign-up" class="btn btn-outline-primary float-right">Sign Up</a>
       </ul>
     </div>
   </div>

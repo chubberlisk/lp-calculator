@@ -1,29 +1,7 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="<%= root_url %>">
-      <img src="<%= asset_path 'icons/icon-48x48.png' %>" class="img-fluid" aria-label="LP Calculator Icon">
-      LP Calculator
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="nav navbar-nav ml-auto">
-        <a href="<%= new_user_session_url %>" id="sign-in" class="btn btn-outline-success float-right">Sign In</a>
-        <span id="or" class="navbar-text" style="margin-right: 0.5rem!important">or</span>
-        <a href="<%= new_user_registration_url %>" id="sign-up" class="btn btn-outline-primary float-right">Sign Up</a>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 <section id="welcome">
   <div class="jumbotron text-center">
     <div class="container-fluid">
-      <h2># TODO(Wen Ting Wang): Say something
-        <span class="text-success">funny</span>
-        and
-        <span class="text-primary">welcoming</span>.</h2>
+      <h2># TODO(Wen Ting Wang): Say something <span class="text-success">funny</span> and <span class="text-primary">welcoming</span>.</h2>
       <p class="lead">A Life Points (LP) Calculator for Yu-Gi-Oh!</p>
       <img src="<%= asset_path 'reduce_lp.gif' %>" class="img-fluid">
       <hr class="my-3">
@@ -78,27 +56,3 @@
     </div>
   </div>
 </section>
-
-<footer>
-  <div class="container text-center">
-    <hr class="bg-secondary">
-    <a href="https://wentingwang.co.uk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Personal Website" data-toggle="tooltip" data-placement="top" title="Wen Ting Wang's Personal Website"><img src="<%= asset_path 'icons/wtw-icon-96x96.png' %>" class="hvr-buzz-out" aria-label="WTW Icon"></a>
-    <h5>Created by Wen Ting Wang</h5>
-    <p>
-      Bacon ipsum dolor amet alcatra tri-tip chuck never gonna give you up, picanha fatback filet mignon buffalo biltong doner. Kielbasa rump chuck shank corned beef prosciutto shoulder filet mignon beef ribs mom's spaghetti. Ham beef ribs burgdoggen biltong. Meatball short
-      ribs hamburger t-bone ground round strip steak.
-    </p>
-    <a href="https://github.com/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's GitHub Profile" data-toggle="tooltip" data-placement="top" title="GitHub - Chubberlisk" class="social-links">
-      <i class="fab fa-github hvr-buzz-out"></i>
-    </a>
-    <a href="https://twitter.com/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Twitter Profile" data-toggle="tooltip" data-placement="top" title="Twitter - Chubberlisk" class="social-links">
-      <i class="fab fa-twitter hvr-buzz-out"></i>
-    </a>
-    <a href="https://www.instagram.com/chubberlisk/" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Instagram Profile" data-toggle="tooltip" data-placement="top" title="Instagram - Chubberlisk" class="social-links">
-      <i class="fab fa-instagram hvr-buzz-out"></i>
-    </a>
-    <a href="https://dev.to/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's DEV Profile" data-toggle="tooltip" data-placement="top" title="Dev.to - Chubberlisk" class="social-links">
-      <i class="fab fa-dev hvr-buzz-out"></i>
-    </a>
-  </div>
-</footer>

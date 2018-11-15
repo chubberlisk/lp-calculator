@@ -19,3 +19,78 @@
 @import 'calculator';
 @import 'welcome';
 @import 'snackbar';
+@import 'devise';
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.navbar-dark .navbar-toggler {
+  border: none;
+}
+
+.navbar {
+  padding: 0.25rem 1rem;
+}
+
+a.navbar-brand img {
+  width: 40px;
+}
+
+footer {
+  margin: 2rem 0 2rem 0;
+}
+
+footer a.social-links {
+  margin-right: 1vw;
+  font-size: 2rem;
+}
+
+footer a.social-links:last-child {
+  margin-right: 0;
+}
+
+footer a img {
+  width: 52px;
+  margin-bottom: 0.5rem;
+}
+
+/* Extra small devices */
+@media only screen and (max-width: 320px) {
+  html {
+    font-size: 0.75rem;
+  }
+
+  section {
+    padding-top: 54px;
+  }
+}
+
+/* Small devices */
+@media only screen and (min-width: 321px) {
+  html {
+    font-size: 0.85rem;
+  }
+
+  section {
+    padding-top: 57px;
+  }
+}
+
+/* Medium devices */
+@media only screen and (min-width: 768px) {
+  a#sign-in, span#or {
+    margin-right: 0.5rem;
+  }
+}
+
+/* Large devices */
+@media only screen and (min-width: 992px) {
+  html {
+    font-size: 1rem;
+  }
+}

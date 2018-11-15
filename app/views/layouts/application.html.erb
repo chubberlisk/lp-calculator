@@ -26,8 +26,53 @@
     <%end%>
   <body>
     <div id="snackbar"></div>
+    <% if !current_page?('/calculator') %>
+      <nav class="navbar fixed-top navbar-expand-md bg-dark navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="<%= root_url %>">
+            <img src="<%= asset_path 'icons/icon-48x48.png' %>" class="img-fluid" aria-label="LP Calculator Icon">
+            LP Calculator
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav ml-auto">
+              <a href="<%= new_user_session_url %>" id="sign-in" class="btn btn-outline-success float-right">Sign In</a>
+              <span id="or" class="navbar-text" style="margin-right: 0.5rem!important">or</span>
+              <a href="<%= new_user_registration_url %>" id="sign-up" class="btn btn-outline-primary float-right">Sign Up</a>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <% end %>
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
     <%= yield %>
+    <% if !current_page?('/calculator') %>
+      <footer>
+        <div class="container text-center">
+          <hr class="bg-secondary">
+          <a href="https://wentingwang.co.uk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Personal Website" data-toggle="tooltip" data-placement="top" title="Wen Ting Wang's Personal Website"><img src="<%= asset_path 'icons/wtw-icon-96x96.png' %>" class="hvr-buzz-out" aria-label="WTW Icon"></a>
+          <h5>Created by Wen Ting Wang</h5>
+          <p>
+            Bacon ipsum dolor amet alcatra tri-tip chuck never gonna give you up, picanha fatback filet mignon buffalo biltong doner. Kielbasa rump chuck shank corned beef prosciutto shoulder filet mignon beef ribs mom's spaghetti. Ham beef ribs burgdoggen biltong. Meatball short
+            ribs hamburger t-bone ground round strip steak.
+          </p>
+          <a href="https://github.com/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's GitHub Profile" data-toggle="tooltip" data-placement="top" title="GitHub - Chubberlisk" class="social-links">
+            <i class="fab fa-github hvr-buzz-out"></i>
+          </a>
+          <a href="https://twitter.com/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Twitter Profile" data-toggle="tooltip" data-placement="top" title="Twitter - Chubberlisk" class="social-links">
+            <i class="fab fa-twitter hvr-buzz-out"></i>
+          </a>
+          <a href="https://www.instagram.com/chubberlisk/" target="_blank" rel="noopener" aria-label="Wen Ting Wang's Instagram Profile" data-toggle="tooltip" data-placement="top" title="Instagram - Chubberlisk" class="social-links">
+            <i class="fab fa-instagram hvr-buzz-out"></i>
+          </a>
+          <a href="https://dev.to/chubberlisk" target="_blank" rel="noopener" aria-label="Wen Ting Wang's DEV Profile" data-toggle="tooltip" data-placement="top" title="Dev.to - Chubberlisk" class="social-links">
+            <i class="fab fa-dev hvr-buzz-out"></i>
+          </a>
+        </div>
+      </footer>
+    <% end %>
   </body>
 </html>

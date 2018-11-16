@@ -1,24 +1,40 @@
 <section id="sign-in">
   <div class="container text-center">
-    <h2>Sign In</h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.password_field :password, autocomplete: 'current-password', placeholder: 'Password', class: 'form-control' %>
-      </div>
-      <% if devise_mapping.rememberable? -%>
+    <div class="card text-white bg-dark mx-auto">
+      <div class="card-header"><i class="fas fa-sign-in-alt"></i></div>
+      <div class="card-body">
+        <h3 class="card-title">Sign In</h3>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-key"></i></div>
+            </div>
+            <%= f.password_field :password, autocomplete: 'current-password', placeholder: 'Password', class: 'form-control' %>
+          </div>
+        </div>
+        <% if devise_mapping.rememberable? -%>
         <div class="form-group form-check">
           <%= f.check_box :remember_me, id: 'remember-me', class: 'form-check-input' %>
           <%= f.label :remember_me, class: 'form-check-label', for: 'remember-me' %>
         </div>
-      <% end -%>
-      <div class="actions">
-        <%= f.submit 'Enter the Shadow Realm', class: 'btn btn-success' %>
+        <% end -%>
+        <div class="actions">
+          <%= f.submit 'Enter the Shadow Realm', class: 'btn btn-success' %>
+        </div>
+        <% end %>
       </div>
-    <% end %>
-    <br />
-    <%= render "devise/shared/links" %>
+      <div class="card-footer">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
 </section>

@@ -38,9 +38,16 @@
           </button>
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="nav navbar-nav ml-auto">
-              <a href="<%= new_user_session_url %>" id="sign-in" class="btn btn-outline-success float-right">Sign In</a>
-              <span id="or" class="navbar-text" style="margin-right: 0.5rem!important">or</span>
-              <a href="<%= new_user_registration_url %>" id="sign-up" class="btn btn-outline-primary float-right">Sign Up</a>
+              <% if user_signed_in? %>
+                <span id="hello-user" class="navbar-text">
+                  Hello, <%= current_user.email %>
+                </span>
+                <%= link_to('Sign Out', destroy_user_session_path, method: :delete, id: 'sign-out', class: 'btn btn-outline-danger') %>
+              <% else %>
+                <a href="<%= new_user_session_url %>" id="sign-in" class="btn btn-outline-success float-right">Sign In</a>
+                <span id="or" class="navbar-text" style="margin-right: 0.5rem!important">or</span>
+                <a href="<%= new_user_registration_url %>" id="sign-up" class="btn btn-outline-primary float-right">Sign Up</a>
+              <% end %>
             </ul>
           </div>
         </div>

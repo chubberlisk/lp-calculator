@@ -1,25 +1,48 @@
 <section id="sign-up">
   <div class="container text-center">
-    <h2>Sign Up</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="form-group"">
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', class: 'form-control' %>
+    <div class="card text-white bg-dark mx-auto">
+      <div class="card-header"><i class="fas fa-user-plus"></i></div>
+      <div class="card-body">
+        <h3>Sign Up</h3>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-key"></i></div>
+            </div>
+            <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control', placeholder: 'Password' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-key"></i></div>
+            </div>
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: 'Password Confirmation', class: 'form-control' %>
+          </div>
+          <% if @minimum_password_length %>
+          <small class="form-text text-info">
+            Your password must be a minimum of <%= @minimum_password_length %> characters long.
+          </small>
+          <% end %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Sign Up", class: 'btn btn-success' %>
+        </div>
+        <% end %>
+      </div>
+      <div class="card-footer">
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
-    <div class="form-group"">
-      <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control', placeholder: 'Password' %>
-      <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: 'Password Confirmation', class: 'form-control' %>
-      <% if @minimum_password_length %>
-        <small id="passwordHelpBlock" class="form-text text-muted">
-          Your password must be a minimum of <%= @minimum_password_length %> characters long.
-        </small>
-      <% end %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Sign Up", class: 'btn btn-success' %>
-    </div>
-    <% end %>
-    <br />
-    <%= render "devise/shared/links" %>
   </div>
 </section>

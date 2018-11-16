@@ -5,13 +5,17 @@
       <div class="card-body">
         <h3>Sign Up</h3>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+        <% errors = resource.errors.details %>
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-prepend">
               <div class="input-group-text"><i class="fas fa-envelope"></i></div>
             </div>
-            <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', class: 'form-control' %>
+            <% email_class = errors[:email].empty? ? 'form-control' : 'form-control is-invalid' %>
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', class: email_class %>
+            <div class="invalid-feedback">
+              Please provide an email address.
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -19,7 +23,11 @@
             <div class="input-group-prepend">
               <div class="input-group-text"><i class="fas fa-key"></i></div>
             </div>
-            <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control', placeholder: 'Password' %>
+            <% password_class = errors[:password].empty? ? 'form-control' : 'form-control is-invalid' %>
+            <%= f.password_field :password, autocomplete: 'new-password', class: password_class, placeholder: 'Password' %>
+            <div class="invalid-feedback">
+              Please provide a password with a minimum of <%= @minimum_password_length %> characters long.
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -27,7 +35,11 @@
             <div class="input-group-prepend">
               <div class="input-group-text"><i class="fas fa-key"></i></div>
             </div>
-            <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: 'Password Confirmation', class: 'form-control' %>
+            <% password_confirmation_class = errors[:password_confirmation].empty? ? 'form-control' : 'form-control is-invalid' %>
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: 'Password Confirmation', class: password_confirmation_class %>
+            <div class="invalid-feedback">
+              Password confirmation failed. Please try again.
+            </div>
           </div>
           <% if @minimum_password_length %>
           <small class="form-text text-info">
@@ -36,7 +48,7 @@
           <% end %>
         </div>
         <div class="actions">
-          <%= f.submit "Sign Up", class: 'btn btn-success' %>
+          <%= f.submit "Sign Up", id: 'sign-up', class: 'btn btn-success' %>
         </div>
         <% end %>
       </div>

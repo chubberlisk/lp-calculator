@@ -7,8 +7,9 @@ section#sign-in, section#sign-up, section#forgot-password {
 }
 
 /* Large devices */
-@media only screen and (min-width: 768px) {
-  section#sign-in .card, section#sign-up .card, section#forgot-password .card {
-    width: 50rem;
+@media only screen and (min-width: 992px) {
+  section#sign-in .form-group, section#sign-up .form-group, section#forgot-password .form-group {
+    margin-right: 250px;
+    margin-left: 250px;
   }
 }

@@ -3,7 +3,8 @@
     <div class="card text-white bg-dark mx-auto">
       <div class="card-header"><i class="fas fa-sign-in-alt"></i></div>
       <div class="card-body">
-        <h3 class="card-title">Sign In</h3>
+        <% title = current_page?('/users/sign_in') ? 'Sign In' : 'Admin Sign In' %>
+        <h3 class="card-title"><%= title %></h3>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <div class="input-group mb-2">

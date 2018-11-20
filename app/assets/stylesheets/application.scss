@@ -21,6 +21,11 @@
 @import 'snackbar';
 @import 'devise';
 
+main {
+  min-height: 100vh;
+  margin: 0 0 2rem 0;
+}
+
 p {
   font-size: 1rem;
 }
@@ -42,7 +47,7 @@ a.navbar-brand img {
 }
 
 footer {
-  margin: 2rem 0 2rem 0;
+  margin: 0 0 2rem 0;
 }
 
 footer a.social-links {
@@ -64,20 +69,12 @@ footer a img {
   html {
     font-size: 0.75rem;
   }
-
-  section {
-    padding-top: 54px;
-  }
 }
 
 /* Small devices */
 @media only screen and (min-width: 321px) {
   html {
     font-size: 0.85rem;
-  }
-
-  section {
-    padding-top: 57px;
   }
 }
 

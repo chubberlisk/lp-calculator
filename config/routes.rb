@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  namespace :admin do
+      resources :users
+      root to: "users#index"
+    end
   devise_for :users
   root 'welcome#index'
   get 'calculator', to: 'calculator#index', as: :calculator

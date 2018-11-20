@@ -41,7 +41,7 @@ gem 'bootstrap'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'serviceworker-rails'
 gem 'devise'
-gem 'activeadmin'
+gem "administrate"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

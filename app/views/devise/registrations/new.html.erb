@@ -14,7 +14,19 @@
             <% email_class = errors[:email].empty? ? 'form-control' : 'form-control is-invalid' %>
             <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email Address', class: email_class %>
             <div class="invalid-feedback">
-              Please provide an email address.
+              Please provide a valid email address.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-user"></i></div>
+            </div>
+            <% username_class = errors[:username].empty? ? 'form-control' : 'form-control is-invalid' %>
+            <%= f.text_field :username, autofocus: true, autocomplete: 'username', placeholder: 'Username', class: username_class %>
+            <div class="invalid-feedback">
+              Please provide a valid username.
             </div>
           </div>
         </div>

@@ -1,5 +1,9 @@
 <div id="player-<%= player %>-section" class="col-12">
   <div class="container">
+    <% if user_signed_in? %>
+      <% player == "one" ? name = current_user.username : name = "Player Two" %>
+      <h2 id="player-<%= player %>"><%= name.upcase %></h2>
+    <% end %>
     <p id="player-<%= player %>-lp">8000</p>
     <div id="player-<%= player %>-lp-change-section">
       <button id="player-<%= player %>-lp-cancel" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>

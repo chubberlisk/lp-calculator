@@ -14,10 +14,10 @@ class WelcomeViewTest < ActionDispatch::IntegrationTest
   end
 
   test 'shows a sign up button' do
-    assert_select 'button#sign-up'
+    assert_select 'a#sign-up.btn'
   end
 
   test 'show a sign in button' do
-    assert_select 'button#sign-in'
+    assert_select 'a#sign-in.btn'
   end
 end

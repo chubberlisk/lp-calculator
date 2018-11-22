@@ -1,17 +1,18 @@
 require 'application_system_test_case'
 
 class SigningInTest < ApplicationSystemTestCase
+  # Signing in
   def setup
     @user = create(:user)
-    visit new_user_session_url
+    visit new_user_session_path
   end
 
-  # Signing in
   test 'can sign in with valid email and password' do
     fill_in('user[login]', with: @user.email)
     fill_in('user[password]', with: @user.password)
     click_on('Enter the Shadow Realm')
     assert has_current_path?('/')
+    assert_text 'Hello, ' + @user.username
   end
 
   test 'can sign in with valid username and password' do
@@ -19,6 +20,7 @@ class SigningInTest < ApplicationSystemTestCase
     fill_in('user[password]', with: @user.password)
     click_on('Enter the Shadow Realm')
     assert has_current_path?('/')
+    assert_text 'Hello, ' + @user.username
   end
 
   test 'cannot sign in with valid email and invalid password' do

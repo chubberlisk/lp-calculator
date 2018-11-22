@@ -1,14 +1,8 @@
-.jumbotron {
-  margin-bottom: 4vh;
-}
+.jumbotron { margin-bottom: 4vh; }
 
-.jumbotron a i {
-  margin-right: 0.5em;
-}
+.jumbotron a i { margin-right: 0.5em; }
 
-div#features .row {
-  margin-bottom: 4vh;
-}
+div#features .row { margin-bottom: 4vh; }
 
 div#features i {
   display: block;
@@ -18,40 +12,27 @@ div#features i {
 
 /* Extra small devices */
 @media only screen and (max-width: 320px) {
-  div#features i {
-    font-size: 2rem;
-  }
+  div#features i { font-size: 2rem; }
 
-  .jumbotron img {
-    width: 175px;
-  }
+  .jumbotron img { width: 175px; }
 }
 
 /* Small devices */
 @media only screen and (min-width: 321px) {
-  div#features i {
-    font-size: 2.5rem;
-  }
+  div#features i { font-size: 2.5rem; }
 
-  .jumbotron img {
-    width: 250px;
-  }
+  .jumbotron img { width: 250px; }
 }
 
 /* Medium devices */
 @media only screen and (min-width: 768px) {
-  a#sign-in, span#or {
-    margin-right: 0.5rem;
-  }
+  a#sign-in,
+  span#or { margin-right: 0.5rem; }
 }
 
 /* Large devices */
 @media only screen and (min-width: 992px) {
-  div#features i {
-    font-size: 2.75rem;
-  }
+  div#features i { font-size: 2.75rem; }
 
-  .jumbotron img {
-    width: auto;
-  }
+  .jumbotron img { width: auto; }
 }

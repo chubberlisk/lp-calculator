@@ -5,6 +5,6 @@ class ReturningHomeTest < ApplicationSystemTestCase
   test 'can return to home page from calculator' do
     visit calculator_url
     find('a[href="/"]').click
-    has_current_path?('/')
+    assert has_current_path?('/')
   end
 end

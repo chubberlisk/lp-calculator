@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    resource.is_a?(User) ? root_path : admin_root_path
+    resource.is_a?(User) ? user_profile_path(resource) : admin_root_path
   end
 
   protected

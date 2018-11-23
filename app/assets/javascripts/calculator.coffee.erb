@@ -141,8 +141,9 @@ $(document).on "turbolinks:load", ->
     if confirm "Are you sure you want to reset life points?"
       resetLp()
 
-  $("button#add-player-two").click (e) ->
-    $(this).css("display", "none")
+  $("button#add-player-two-guest").click (e) ->
+    $("button#add-player-two").css("display", "none")
+    $('#add-player-two-modal').modal('hide')
     $("button#remove-player-two").css("display", "inline-block")
     $("div#player-one-section, div#player-two-section").addClass("col-lg-4")
     $("div#duel-btns-section").addClass("col-lg-4")

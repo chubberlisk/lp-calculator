@@ -142,8 +142,8 @@ $(document).on "turbolinks:load", ->
       resetLp()
 
   $("button#add-player-two-guest").click (e) ->
+    $("#add-player-two-modal").modal("hide")
     $("button#add-player-two").css("display", "none")
-    $('#add-player-two-modal').modal('hide')
     $("button#remove-player-two").css("display", "inline-block")
     $("div#player-one-section, div#player-two-section").addClass("col-lg-4")
     $("div#duel-btns-section").addClass("col-lg-4")
@@ -178,4 +178,8 @@ $(document).on "turbolinks:load", ->
     $("div#player-one-section .container, div#player-one-section .container").toggleClass("rotated")
 
   $("input[name=lp-starting-radio-options]").change (e) ->
+    $("#lp-starting-modal").modal("hide")
     startingLp = parseInt(this.value)
+
+  $("#add-player-two-modal").on "hidden.bs.modal", (e) ->
+    $("#add-player-two-account-form").collapse("hide")

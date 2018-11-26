@@ -5,6 +5,8 @@ class ConfirmingLpPlayerTwoTest < ApplicationSystemTestCase
   def setup
     visit calculator_url
     find('button#add-player-two').click
+    find('button#add-player-two-guest').click
+    find('button#add-player-two-modal-close').click
   end
 
   # Decreasing life points of player two

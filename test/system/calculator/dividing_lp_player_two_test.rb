@@ -5,6 +5,8 @@ class DividingLpPlayerTwoTest < ApplicationSystemTestCase
   test 'can divide by 2 life points of player two' do
     visit calculator_url
     find('button#add-player-two').click
+    find('button#add-player-two-guest').click
+    find('button#add-player-two-modal-close').click
     find('button#player-two-show-lp-btns').click
     find('button#player-two-show-lp-btns').click
     find('button#player-two-lp-divide-two').click

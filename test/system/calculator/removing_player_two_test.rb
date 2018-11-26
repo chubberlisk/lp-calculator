@@ -5,6 +5,8 @@ class RemovingPlayerTwoTest < ApplicationSystemTestCase
   test 'can remove player two' do
     visit calculator_url
     find('button#add-player-two').click
+    find('button#add-player-two-guest').click
+    find('button#add-player-two-modal-close').click
     accept_confirm do
       find('button#remove-player-two').click
     end

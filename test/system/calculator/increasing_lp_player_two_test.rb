@@ -5,6 +5,8 @@ class IncreasingLpPlayerTwoTest < ApplicationSystemTestCase
   def setup
     visit calculator_url
     find('button#add-player-two').click
+    find('button#add-player-two-guest').click
+    find('button#add-player-two-modal-close').click
     find('button#player-two-show-lp-btns').click
   end
 

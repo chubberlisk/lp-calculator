@@ -14,7 +14,7 @@ class SigningUpTest < ApplicationSystemTestCase
     fill_in('user[password]', with: @user.password)
     fill_in('user[password_confirmation]', with: @user.password)
     find('input#sign-up').click
-    assert has_current_path?('/')
+    assert has_current_path?(user_profile_path(User.find_by(email: @user.email)))
     assert_text 'Hello, ' + @user.username
   end
 

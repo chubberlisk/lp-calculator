@@ -43,7 +43,7 @@
                     Hello, <%= current_user.username %>
                   </span>
                   <li class="nav-item">
-                    <a class="nav-link" href="<%= user_profile_path(current_user.id) %>">My Profile</a>
+                    <a class="nav-link" href="<%= user_profile_path(current_user) %>">My Profile</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="<%= calculator_url %>">LP Calculator</a>

@@ -68,11 +68,16 @@
           <button id="add-player-two-guest" class="btn btn-primary">
             Add Guest
           </button>
-          <button id="add-player-two-account" class="btn btn-danger" type="button" data-toggle="collapse" data-target="#add-player-two-account-form" aria-expanded="false" aria-controls="add-player-two-account-form">
-            Add Account
-          </button>
+          <% if user_signed_in? %>
+            <button id="add-player-two-account" class="btn btn-danger" type="button" data-toggle="collapse" data-target="#add-player-two-account-form" aria-expanded="false" aria-controls="add-player-two-account-form">
+              Add Account
+            </button>
+          <% end %>
         </p>
         <form id="add-player-two-account-form" class="collapse">
+          <p class="text-info">
+            Please ask your opponent to sign in.
+          </p>
           <div class="form-group">
             <div class="input-group mb-2">
               <div class="input-group-prepend">

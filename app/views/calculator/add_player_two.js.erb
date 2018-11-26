@@ -1,0 +1,15 @@
+<% if @error %>
+  $("<%= escape_javascript(render :partial => './shared/notice.html.erb', :locals => { :alert => @error }) %>").prependTo("form#add-player-two-account");
+  $(".alert").css("margin-bottom", "1rem");
+<% else %>
+  $("input#player-two-email").val("");
+  $("input#player-two-password").val("");
+  $("#add-player-two-modal").modal("hide");
+  $("button#add-player-two").css("display", "none");
+  $("button#remove-player-two").css("display", "inline-block");
+  $("div#player-one-section, div#player-two-section").addClass("col-lg-4");
+  $("div#duel-btns-section").addClass("col-lg-4");
+  $("div#player-two-section").css("display", "flex");
+  $("p#player-two-lp").animateNumbers(8000, false, 500);
+  $("h2#player-two").html("<%= @player_two.username.upcase %>");
+<% end %>

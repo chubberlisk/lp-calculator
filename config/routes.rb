@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index', as: :welcome
   
   get 'calculator', to: 'calculator#index', as: :calculator
+  post 'calculator/add_player_two', to: 'calculator#add_player_two', as: :add_player_two
   
   scope '/users/:user_id' do
     get '/', to: 'users#show', as: :user_profile

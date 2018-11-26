@@ -57,11 +57,9 @@ class AddingPlayerTwoTest < ApplicationSystemTestCase
     assert_no_selector 'button#remove-player-two'
     find('button#add-player-two').click
     find('button#add-player-two-account').click
-    fill_in('player-two[email]', with: @user.email)
-    fill_in('player-two[password]', with: @user.password)
+    fill_in('player_two[email]', with: @other_user.email)
+    fill_in('player_two[password]', with: @other_user.password)
     click_on('Add')
-    # force modal close
-    find('button#add-player-two-modal-close').click
     within('h2#player-one') do
       assert_text @user.username.upcase, options={:exact => true}
     end
@@ -72,5 +70,53 @@ class AddingPlayerTwoTest < ApplicationSystemTestCase
     assert_selector 'button#remove-player-two', count: 1
     assert_no_selector 'button#add-player-two'
     assert_no_selector '#add-player-two-modal'
+  end
+
+  test 'cannot add player two with an account if empty email and password when signed in' do
+    login_as(@user)
+    visit calculator_url
+    assert_no_selector 'button#remove-player-two'
+    find('button#add-player-two').click
+    find('button#add-player-two-account').click
+    fill_in('player_two[email]', with: "")
+    fill_in('player_two[password]', with: "")
+    click_on('Add')
+    assert_text "Sorry! Invalid email or password."
+  end
+
+  test 'cannot add player two with an account if valid email and empty password when signed in' do
+    login_as(@user)
+    visit calculator_url
+    assert_no_selector 'button#remove-player-two'
+    find('button#add-player-two').click
+    find('button#add-player-two-account').click
+    fill_in('player_two[email]', with: @other_user.email)
+    fill_in('player_two[password]', with: "")
+    click_on('Add')
+    assert_text "Sorry! Invalid email or password."
+  end
+
+  test 'cannot add player two with an account if valid email and invalid password when signed in' do
+    login_as(@user)
+    visit calculator_url
+    assert_no_selector 'button#remove-player-two'
+    find('button#add-player-two').click
+    find('button#add-player-two-account').click
+    fill_in('player_two[email]', with: @other_user.email)
+    fill_in('player_two[password]', with: "notpassword")
+    click_on('Add')
+    assert_text "Sorry! Invalid email or password."
+  end
+
+  test 'cannot add player two with an current user account when signed in' do
+    login_as(@user)
+    visit calculator_url
+    assert_no_selector 'button#remove-player-two'
+    find('button#add-player-two').click
+    find('button#add-player-two-account').click
+    fill_in('player_two[email]', with: @user.email)
+    fill_in('player_two[password]', with: @user.password)
+    click_on('Add')
+    assert_text "Sorry! Invalid email or password."
   end
 end

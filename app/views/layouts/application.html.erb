@@ -68,7 +68,7 @@
           </div>
         </nav>
       <% end %>
-      <%= render :partial => "./shared/notice.html.erb" %>
+      <%= render partial: "./shared/notice.html.erb" %>
       <%= yield %>
     </main>
     <% if !current_page?('/calculator') %>

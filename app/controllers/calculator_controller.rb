@@ -3,4 +3,7 @@ class CalculatorController < ApplicationController
 
   def index
   end
+
+  def add_player_two
+  end
 end

@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   attr_writer :login
 
+  has_many :duels
+
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)

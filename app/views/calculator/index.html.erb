@@ -78,6 +78,7 @@
         <% if user_signed_in? %>
           <%= form_with model: User.new, url: add_player_two_url, id: "add-player-two-account", class: "collapse" do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id, name: 'user_id' %>
+            <%= f.hidden_field :starting_lp, value: 8000, name: 'starting_lp', id: 'starting-lp' %>
             <p class="text-info">
               Please ask your opponent to sign in.
             </p>

@@ -180,6 +180,7 @@ $(document).on "turbolinks:load", ->
   $("input[name=lp-starting-radio-options]").change (e) ->
     $("#lp-starting-modal").modal("hide")
     startingLp = parseInt(this.value)
+    $("input#starting-lp").val(startingLp)
 
   $("#add-player-two-modal").on "hidden.bs.modal", (e) ->
     $("#add-player-two-account-form").collapse("hide")

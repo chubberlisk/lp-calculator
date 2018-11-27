@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :admin_users
   namespace :admin do
       resources :users
+      resources :admin_users
+      resources :duels
       root to: "users#index"
     end
 

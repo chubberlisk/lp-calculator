@@ -2,6 +2,7 @@
   $("<%= escape_javascript(render :partial => './shared/notice.html.erb', :locals => { :alert => @error }) %>").prependTo("form#add-player-two-account");
   $(".alert").css("margin-bottom", "1rem");
 <% else %>
+  $("#duel-id").html("<%= @duel.id %>");
   $("input#player-two-email").val("");
   $("input#player-two-password").val("");
   $("#add-player-two-modal").modal("hide");

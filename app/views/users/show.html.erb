@@ -10,78 +10,26 @@
 
     <h3>My Duels</h3>
     <div id="my-duels" class="list-group">
-      <div class="list-group-item list-group-item-action flex-column align-items-start bg-success text-white">
-        <div class="d-flex justify-content-between">
-          <h5>Won Against Batgirl</h5>
-          <small>1 days ago</small>
-        </div>
-        <div class="row duel-info">
-          <div class="col">
-            <p><i class="fas fa-play-circle"></i> Starting LP: 4000</p>
+      <% @duels.each do |duel| %>
+        <% winner = duel.winner == current_user %>
+        <div class="list-group-item list-group-item-action flex-column align-items-start <%= winner ? "bg-success" : "bg-danger" %> text-white">
+          <div class="d-flex justify-content-between">
+            <h5><%= winner ? "Won" : "Lost" %> Against <%= duel.opponent(current_user).username %></h5>
+            <small><%= time_ago_in_words(duel.created_at) %> ago</small>
           </div>
-          <div class="col">
-            <p><i class="fas fa-hourglass-end"></i> Remaining LP: 4000</p>
-          </div>
-          <div class="col">
-            <p><i class="far fa-clock"></i> Duel Time: 6 mins</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="list-group-item list-group-item-action flex-column align-items-start bg-success text-white">
-        <div class="d-flex justify-content-between">
-          <h5>Won Against Robin</h5>
-          <small>2 days ago</small>
-        </div>
-        <div class="row duel-info">
-          <div class="col">
-            <p><i class="fas fa-play-circle"></i> Starting LP: 8000</p>
-          </div>
-          <div class="col">
-            <p><i class="fas fa-hourglass-end"></i> Remaining LP: 7500</p>
-          </div>
-          <div class="col">
-            <p><i class="far fa-clock"></i> Duel Time: 17 mins</p>
+          <div class="row duel-info">
+            <div class="col">
+              <p><i class="fas fa-play-circle"></i> Starting LP: <%= duel.starting_lp %></p>
+            </div>
+            <div class="col">
+              <p><i class="fas fa-hourglass-end"></i> <%= "Opponent's " if !winner %> Remaining LP <%= winner ? duel.my_lp(current_user) : duel.opponents_lp(current_user) %></p>
+            </div>
+            <div class="col">
+              <p><i class="far fa-clock"></i> Duel Time: <%= duel.time %></p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="list-group-item list-group-item-action flex-column align-items-start bg-success text-white">
-        <div class="d-flex justify-content-between">
-          <h5>Won Against Robin</h5>
-          <small>3 days ago</small>
-        </div>
-        <div class="row duel-info">
-          <div class="col">
-            <p><i class="fas fa-play-circle"></i> Starting LP: 8000</p>
-          </div>
-          <div class="col">
-            <p><i class="fas fa-hourglass-end"></i> Remaining LP: 6500</p>
-          </div>
-          <div class="col">
-            <p><i class="far fa-clock"></i> Duel Time: 22 mins</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="list-group-item list-group-item-action flex-column align-items-start bg-danger text-white">
-        <div class="d-flex justify-content-between">
-          <h5>Lost Against Batgirl</h5>
-          <small>4 days ago</small>
-        </div>
-        <div class="row duel-info" >
-          <div class="col">
-            <p><i class="fas fa-play-circle"></i> Starting LP: 8000</p>
-          </div>
-          <div class="col">
-            <p>Opponent's Remaining LP: 1500</p>
-          </div>
-          <div class="col">
-            <p>Duel Time: 33 mins</p>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
-
   </div>
 </section>

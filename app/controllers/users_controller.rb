@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     render file: "public/401.html", status: :unauthorized if @user != current_user
+    @duels = Duel.my_completed(current_user)
   end
 
   private

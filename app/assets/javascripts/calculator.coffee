@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-pointsChangeAudio = new Audio("<%= asset_path 'points_change.mp3' %>");
+pointsChangeAudio = new Audio("/assets/points_change.mp3");
 startingLp = 8000
 
 showLpBtns = (player) ->
@@ -53,6 +53,7 @@ cancelLpChange = (player) ->
 
 resetLp = ->
   playPointsChange()
+  $("#duel-id").html("")
   $("p#player-one-lp").html(0) if $("p#player-one-lp").html() == startingLp.toString()
   $("p#player-two-lp").html(0) if $("p#player-two-lp").html() == startingLp.toString()
   $("p#player-one-lp").animateNumbers(startingLp, false, 1000);
@@ -68,11 +69,23 @@ confirmLpChange = (player) ->
       playPointsChange()
       $("p#player-"+player+"-lp").animateNumbers(currentLp, false, 1000);
     else
-      if confirm "This duel has ended! Do you want to reset life points?"
-        resetLp()
-      else
-        playPointsChange()
-        $("p#player-"+player+"-lp").animateNumbers(0, false, 1000);
+      # TODO: add AJAX call to update duel in DB
+      duelId = parseInt($("#duel-id").html())
+      playerOneLp = if player == "one" then currentLp else parseInt($("p#player-one-lp").html())
+      playerTwoLp = if player == "two" then currentLp else parseInt($("p#player-two-lp").html())
+      $.ajax "/calculator/duel/#{duelId}",
+        type: 'POST'
+        dataType: 'json'
+        data: { "duel": { "player_one_lp": playerOneLp, "player_two_lp": playerTwoLp } }
+        error: (jqXHR, textStatus, errorThrown) ->
+          alert(errorThrown)
+        success: (data, textStatus, jqXHR) ->
+          if confirm "This duel has ended! Do you want to reset life points?"
+            # TODO: create a new duel
+            resetLp()
+          else
+            playPointsChange()
+            $("p#player-"+player+"-lp").animateNumbers(0, false, 1000);
   else
     currentLp += parseInt($("span#player-"+player+"-lp-change").html())
     playPointsChange()
@@ -153,6 +166,8 @@ $(document).on "turbolinks:load", ->
   $("button#remove-player-two").click (e) ->
     if confirm "Are you sure you want to remove Player Two?"
       $(this).css("display", "none")
+      $("#duel-id").html("")
+      $("h2#player-two").html("PLAYER TWO")
       $("button#add-player-two").css("display", "inline-block")
       $("div#player-two-section").css("display", "none")
       $("div#player-one-section, div#player-two-section").removeClass("col-lg-4")

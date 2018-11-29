@@ -38,6 +38,9 @@
         </button>
       </div>
       <div class="modal-body">
+        <p class="text-info">
+          This will come into effect in the next duel.
+        </p>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="lp-starting-radio-options" id="lp-starting-radio-eight-thousand" value="8000" checked>
           <label class="form-check-label" for="lp-starting-radio-eight-thousand">8000</label>
@@ -75,7 +78,6 @@
             </button>
           <% end %>
         </p>
-
         <% if user_signed_in? %>
           <%= form_with model: User.new, url: add_player_two_url, id: "add-player-two-account", class: "collapse" do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id, name: 'user_id' %>
@@ -100,7 +102,7 @@
               </div>
             </div>
             <div class="actions">
-            <%= f.submit "Add", class: "btn btn-success" %>
+            <%= f.submit "Add", class: "btn btn-success", data: { "disable-with": "Adding..." } %>
             </div>
           <% end %>
         <% end %>

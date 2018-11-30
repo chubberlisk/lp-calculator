@@ -33,6 +33,6 @@ class Duel < ApplicationRecord
   end
 
   def time
-    "#{((created_at - ended_at) / 1.minutes).round } mins"
+    "#{((created_at - ended_at) / 1.minutes).round} mins"
   end
 end

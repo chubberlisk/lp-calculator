@@ -13,6 +13,8 @@ FactoryBot.define do
     end
 
     trait :completed do
+      player_one_lp { 8000 }
+      player_two_lp { 0 }
       status { 1 }
     end
 

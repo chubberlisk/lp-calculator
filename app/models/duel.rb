@@ -12,7 +12,7 @@ class Duel < ApplicationRecord
   scope :my_cancelled, ->(user) { was_player_one(user).or(was_player_two(user)).where(status: :cancelled) }
 
   def winner
-    return errors.add(:winner, "no winner as duel not completed") unless completed?
+    return errors.add(:winner, 'no winner as duel not completed') unless completed?
     player_one_lp > player_two_lp ? player_one : player_two
   end
 
@@ -33,6 +33,7 @@ class Duel < ApplicationRecord
   end
 
   def time
-    "#{((created_at - ended_at) / 1.minutes).round} mins"
+    return errors.add(:winner, 'no time as duel not completed') unless completed?
+    "#{((ended_at - created_at) / 1.minutes).round} mins"
   end
 end

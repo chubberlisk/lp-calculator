@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WinnerTest < ActiveSupport::TestCase
+class IsWinnerTest < ActiveSupport::TestCase
   def setup
     @started_duel = build(:started_duel)
     @cancelled_duel = build(:cancelled_duel)

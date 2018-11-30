@@ -39,5 +39,4 @@ class OpponentsLpTest < ActiveSupport::TestCase
   test 'should return 0 for a completed duel when player two is winner if player one' do
     assert_equal 0, @duel_p2_winner.opponents_lp(@duel_p2_winner.player_two)
   end
-
 end

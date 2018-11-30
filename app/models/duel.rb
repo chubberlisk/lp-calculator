@@ -16,16 +16,20 @@ class Duel < ApplicationRecord
     player_one_lp > player_two_lp ? player_one : player_two
   end
 
-  def opponent(current_user)
-    player_one == current_user ? player_two : player_one
+  def winner?(user)
+    winner == user
   end
 
-  def opponents_lp(current_user)
-    player_one == current_user ? player_two_lp : player_one_lp
+  def opponent(user)
+    player_one == user ? player_two : player_one
   end
 
-  def my_lp(current_user)
-    player_one == current_user ? player_one_lp : player_two_lp
+  def opponents_lp(user)
+    player_one == user ? player_two_lp : player_one_lp
+  end
+
+  def my_lp(user)
+    player_one == user ? player_one_lp : player_two_lp
   end
 
   def time

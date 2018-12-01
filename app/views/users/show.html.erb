@@ -12,7 +12,7 @@
     <div id="my-duels" class="list-group">
       <% @duels.each do |duel| %>
         <% winner = duel.winner?(current_user) %>
-        <div class="list-group-item list-group-item-action flex-column align-items-start <%= winner ? "bg-success" : "bg-danger" %> text-white">
+        <div class="list-group-item list-group-item-action flex-column align-items-start <%= winner ? "bg-success" : "bg-danger" %> text-white" id="duel-<%= duel.id%>">
           <div class="d-flex justify-content-between">
             <h5><%= winner ? "Won" : "Lost" %> Against <%= duel.opponent(current_user).username %></h5>
             <small><%= time_ago_in_words(duel.created_at) %> ago</small>
@@ -22,7 +22,7 @@
               <p><i class="fas fa-play-circle"></i> Starting LP: <%= duel.starting_lp %></p>
             </div>
             <div class="col">
-              <p><i class="fas fa-hourglass-end"></i> <%= "Opponent's " if !winner %> Remaining LP <%= winner ? duel.my_lp(current_user) : duel.opponents_lp(current_user) %></p>
+              <p><i class="fas fa-hourglass-end"></i> <%= "Opponent's " if !winner %> Remaining LP: <%= winner ? duel.my_lp(current_user) : duel.opponents_lp(current_user) %></p>
             </div>
             <div class="col">
               <p><i class="far fa-clock"></i> Duel Time: <%= duel.time %></p>

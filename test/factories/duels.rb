@@ -13,6 +13,7 @@ FactoryBot.define do
     end
 
     trait :completed do
+      ended_at { Time.now.advance(minutes: 30) }
       player_one_lp { 8000 }
       player_two_lp { 0 }
       status { 1 }

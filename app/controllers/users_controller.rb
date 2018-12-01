@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    render file: "public/401.html", status: :unauthorized if @user != current_user
+    render file: 'public/401.html', status: :unauthorized if @user != current_user
     @duels = Duel.my_completed(current_user)
   end
 

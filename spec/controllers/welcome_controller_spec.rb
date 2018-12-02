@@ -21,11 +21,11 @@ RSpec.describe WelcomeController, type: :controller do
     context 'with admin user signed in' do
       let(:admin_user) { create(:admin_user) }
 
-      before { login_as(admin_user) }
+      before { sign_in(admin_user) }
 
       it 'signs out admin user' do
         get :index
-        expect(controller.current_user).to be_nil
+        expect(controller.current_admin_user).to be_nil
       end
 
       include_examples 'renders successfully'
@@ -34,7 +34,7 @@ RSpec.describe WelcomeController, type: :controller do
     context 'with user signed in' do
       let(:user) { create(:user) }
 
-      before { login_as(user) }
+      before { sign_in(user) }
 
       include_examples 'renders successfully'
     end

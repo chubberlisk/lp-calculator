@@ -26,7 +26,7 @@ RSpec.describe CalculatorController, type: :controller do
     context 'with admin user signed in' do
       let(:admin_user) { create(:admin_user) }
 
-      before { login_as(admin_user) }
+      before { sign_in(admin_user) }
 
       it 'signs out admin user' do
         get :index
@@ -37,7 +37,7 @@ RSpec.describe CalculatorController, type: :controller do
     end
 
     context 'with user signed in' do
-      before { login_as(chandler) }
+      before { sign_in(chandler) }
 
       include_examples 'renders successfully'
     end

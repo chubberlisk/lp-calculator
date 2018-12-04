@@ -17,6 +17,7 @@ class Duel < ApplicationRecord
   end
 
   def winner?(user)
+    return errors.add(:winner, 'no winner as duel not completed') unless completed?
     winner == user
   end
 

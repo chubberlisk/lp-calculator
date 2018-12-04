@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Duel, type: :model do
+  let(:user_one) { build(:user_one) }
+  let(:user_two) { build(:user_two) }
+
   describe '#winner' do
     context 'when a completed duel' do
-      let(:user_one) { build(:user_one) }
-      let(:user_two) { build(:user_two) }
-
       context 'with player one the winner' do
         let(:p1_winner_duel) { build(:p1_winner_duel, player_one: user_one, player_two: user_two) }
 
@@ -42,7 +42,59 @@ RSpec.describe Duel, type: :model do
     end
   end
 
-  # describe '#winner?' do
-  #   context 'when user '
-  # end
+  describe '#winner?' do
+    context 'when a completed duel' do
+      context 'with player one the winner' do
+        let(:p1_winner_duel) { build(:p1_winner_duel, player_one: user_one, player_two: user_two) }
+
+        it 'returns true for user one' do
+          expect(p1_winner_duel.winner?(user_one)).to be true
+        end
+
+        it 'returns false for user two' do
+          expect(p1_winner_duel.winner?(user_two)).to be false
+        end
+      end
+
+      context 'with player two the winner' do
+        let(:p2_winner_duel) { build(:p2_winner_duel, player_one: user_one, player_two: user_two) }
+
+        it 'returns true for user two' do
+          expect(p2_winner_duel.winner?(user_two)).to be true
+        end
+
+        it 'returns false for user one' do
+          expect(p2_winner_duel.winner?(user_one)).to be false
+        end
+      end
+    end
+
+    context 'when a started duel' do
+      let(:started_duel) { build(:started_duel) }
+
+      it 'returns an error for user one' do
+        started_duel.winner?(user_one)
+        expect(started_duel.errors[:winner].size).to eq(1)
+      end
+
+      it 'returns an error for user two' do
+        started_duel.winner?(user_two)
+        expect(started_duel.errors[:winner].size).to eq(1)
+      end
+    end
+
+    context 'when a cancelled duel' do
+      let(:cancelled_duel) { build(:cancelled_duel) }
+
+      it 'returns an error for user one' do
+        cancelled_duel.winner?(user_one)
+        expect(cancelled_duel.errors[:winner].size).to eq(1)
+      end
+
+      it 'returns an error for user two' do
+        cancelled_duel.winner?(user_two)
+        expect(cancelled_duel.errors[:winner].size).to eq(1)
+      end
+    end
+  end
 end

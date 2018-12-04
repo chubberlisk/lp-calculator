@@ -3,22 +3,22 @@ require 'rails_helper'
 RSpec.describe Duel, type: :model do
   describe '#winner' do
     context 'when a completed duel' do
-      let(:player_one) { build(:chandler) }
-      let(:player_two) { build(:monica) }
+      let(:user_one) { build(:user_one) }
+      let(:user_two) { build(:user_two) }
 
       context 'with player one the winner' do
-        let(:p1_winner_duel) { build(:p1_winner_duel, player_one: player_one, player_two: player_two) }
+        let(:p1_winner_duel) { build(:p1_winner_duel, player_one: user_one, player_two: user_two) }
 
         it 'returns the user with the highest life points' do
-          expect(p1_winner_duel.winner).to eql(player_one)
+          expect(p1_winner_duel.winner).to eql(user_one)
         end
       end
 
       context 'with player two the winner' do
-        let(:p2_winner_duel) { build(:p2_winner_duel, player_one: player_one, player_two: player_two) }
+        let(:p2_winner_duel) { build(:p2_winner_duel, player_one: user_one, player_two: user_two) }
 
         it 'returns the user with the highest life points' do
-          expect(p2_winner_duel.winner).to eql(player_two)
+          expect(p2_winner_duel.winner).to eql(user_two)
         end
       end
     end
@@ -41,4 +41,8 @@ RSpec.describe Duel, type: :model do
       end
     end
   end
+
+  # describe '#winner?' do
+  #   context 'when user '
+  # end
 end

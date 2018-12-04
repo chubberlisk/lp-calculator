@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe CalculatorController, type: :controller do
   let(:duel) { double(Duel) }
-  let(:chandler) { create(:chandler) }
-  let(:monica) { create(:monica) }
+  let(:user_one) { create(:user_one) }
+  let(:user_two) { create(:user_two) }
   let(:starting_lp) { 8000 }
 
   describe 'GET index' do
@@ -37,7 +37,7 @@ RSpec.describe CalculatorController, type: :controller do
     end
 
     context 'with user signed in' do
-      before { sign_in(chandler) }
+      before { sign_in(user_one) }
 
       include_examples 'renders successfully'
     end
@@ -52,23 +52,23 @@ RSpec.describe CalculatorController, type: :controller do
     context 'when valid params' do
       it 'creates a new duel with the given attributes' do
         expect(Duel).to receive(:new).with(
-          player_one: chandler,
-          player_two: monica,
+          player_one: user_one,
+          player_two: user_two,
           starting_lp: starting_lp
         ).and_return(duel)
         post :add_player_two, params: {
-          user_id: chandler.id,
+          user_id: user_one.id,
           starting_lp: starting_lp,
-          player_two: { email: monica.email, password: monica.password }
+          player_two: { email: user_two.email, password: user_two.password }
         }, format: :js
       end
 
       it 'saves the duel' do
         expect(duel).to receive(:save)
         post :add_player_two, params: {
-          user_id: chandler.id,
+          user_id: user_one.id,
           starting_lp: starting_lp,
-          player_two: { email: monica.email, password: monica.password }
+          player_two: { email: user_two.email, password: user_two.password }
         }, format: :js
       end
 
@@ -79,18 +79,18 @@ RSpec.describe CalculatorController, type: :controller do
 
         it 'assigns @duel' do
           post :add_player_two, params: {
-            user_id: chandler.id,
+            user_id: user_one.id,
             starting_lp: starting_lp,
-            player_two: { email: monica.email, password: monica.password }
+            player_two: { email: user_two.email, password: user_two.password }
           }, format: :js
           expect(assigns[:duel]).to eq(duel)
         end
 
         it 'has a 200 status code' do
           post :add_player_two, params: {
-            user_id: chandler.id,
+            user_id: user_one.id,
             starting_lp: starting_lp,
-            player_two: { email: monica.email, password: monica.password }
+            player_two: { email: user_two.email, password: user_two.password }
           }, format: :js
           expect(response.status).to eq(200)
         end
@@ -100,9 +100,9 @@ RSpec.describe CalculatorController, type: :controller do
         it 'assigns @error' do
           allow(duel).to receive(:save).and_return(false)
           post :add_player_two, params: {
-            user_id: chandler.id,
+            user_id: user_one.id,
             starting_lp: starting_lp,
-            player_two: { email: monica.email, password: monica.password }
+            player_two: { email: user_two.email, password: user_two.password }
           }, format: :js
           expect(assigns[:error]).to eq('Sorry, an error has occurred! Unable to create duel session.')
         end
@@ -128,7 +128,7 @@ RSpec.describe CalculatorController, type: :controller do
             post :add_player_two, params: {
               user_id: nil,
               starting_lp: starting_lp,
-              player_two: { email: monica.email, password: monica.password }
+              player_two: { email: user_two.email, password: user_two.password }
             }, format: :js
             expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
           end
@@ -139,7 +139,7 @@ RSpec.describe CalculatorController, type: :controller do
             post :add_player_two, params: {
               user_id: 99999,
               starting_lp: starting_lp,
-              player_two: { email: monica.email, password: monica.password }
+              player_two: { email: user_two.email, password: user_two.password }
             }, format: :js
             expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
           end
@@ -151,9 +151,9 @@ RSpec.describe CalculatorController, type: :controller do
           context 'when email is nil' do
             it 'assigns @error' do
               post :add_player_two, params: {
-                user_id: chandler.id,
+                user_id: user_one.id,
                 starting_lp: starting_lp,
-                player_two: { email: nil, password: monica.password }
+                player_two: { email: nil, password: user_two.password }
               }, format: :js
               expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
             end
@@ -162,9 +162,9 @@ RSpec.describe CalculatorController, type: :controller do
           context 'when email cannot be found' do
             it 'assigns @error' do
               post :add_player_two, params: {
-                user_id: chandler.id,
+                user_id: user_one.id,
                 starting_lp: starting_lp,
-                player_two: { email: 'email@doesnt.exit', password: monica.password }
+                player_two: { email: 'email@doesnt.exist', password: user_two.password }
               }, format: :js
               expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
             end
@@ -175,9 +175,9 @@ RSpec.describe CalculatorController, type: :controller do
           context 'when password is nil' do
             it 'assigns @error' do
               post :add_player_two, params: {
-                user_id: chandler.id,
+                user_id: user_one.id,
                 starting_lp: starting_lp,
-                player_two: { email: monica.email, password: nil }
+                player_two: { email: user_two.email, password: nil }
               }, format: :js
               expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
             end
@@ -186,9 +186,9 @@ RSpec.describe CalculatorController, type: :controller do
           context 'when password is incorrect' do
             it 'assigns @error' do
               post :add_player_two, params: {
-                user_id: chandler.id,
+                user_id: user_one.id,
                 starting_lp: starting_lp,
-                player_two: { email: monica.email, password: 'notpassword' }
+                player_two: { email: user_two.email, password: 'notpassword' }
               }, format: :js
               expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
             end
@@ -199,9 +199,9 @@ RSpec.describe CalculatorController, type: :controller do
       context 'when player two is player one' do
         it 'assigns @error' do
           post :add_player_two, params: {
-            user_id: chandler.id,
+            user_id: user_one.id,
             starting_lp: starting_lp,
-            player_two: { email: chandler.email, password: chandler.password }
+            player_two: { email: user_one.email, password: user_one.password }
           }, format: :js
           expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
         end

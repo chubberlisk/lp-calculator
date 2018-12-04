@@ -5,8 +5,8 @@ FactoryBot.define do
     player_one_lp { nil }
     player_two_lp { nil }
     ended_at { nil }
-    association :player_one, factory: :chandler, strategy: :build
-    association :player_two, factory: :monica, strategy: :build
+    association :player_one, factory: :user_one, strategy: :build
+    association :player_two, factory: :user_two, strategy: :build
 
     trait :completed do
       ended_at { Time.now.advance(minutes: 30) }

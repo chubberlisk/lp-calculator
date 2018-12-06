@@ -9,5 +9,10 @@ FactoryBot.define do
       email { "monica@friends.com" }
       username { "monica" }
     end
+
+    factory :user_three do
+      email { "joey@friends.com" }
+      username { "joey" }
+    end
   end
 end

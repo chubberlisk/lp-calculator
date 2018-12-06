@@ -123,9 +123,5 @@ RSpec.describe Duel, type: :model do
         end
       end
     end
-
-    context 'when a started duel' do
-      
-    end
   end
 end

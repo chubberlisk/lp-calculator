@@ -30,11 +30,12 @@ class Duel < ApplicationRecord
   end
 
   def my_lp(user)
+    return errors.add(:my_lp, 'user is not a player in this duel') unless player_one == user || player_two == user
     player_one == user ? player_one_lp : player_two_lp
   end
 
   def time
-    return errors.add(:winner, 'no time as duel not completed') unless completed?
+    return errors.add(:time, 'no time as duel not completed') unless completed?
     "#{((ended_at - created_at) / 1.minutes).round} mins"
   end
 end

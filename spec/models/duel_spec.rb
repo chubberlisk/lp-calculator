@@ -97,4 +97,35 @@ RSpec.describe Duel, type: :model do
       end
     end
   end
+
+  describe 'my_lp' do
+    context 'when a completed duel' do
+      let(:completed_duel) { build(:completed_duel, player_one: user_one, player_two: user_two) }
+
+      context 'with user equal to player one' do
+        it 'returns the life points of user' do
+          expect(completed_duel.my_lp(user_one)).to be(8000)
+        end
+      end
+
+      context 'with user equal to player two' do
+        it 'returns the life points of user' do
+          expect(completed_duel.my_lp(user_two)).to be(0)
+        end
+      end
+
+      context 'with user not a player of duel' do
+        let(:user_three) { build(:user_three) }
+
+        it 'returns an error' do
+          completed_duel.my_lp(user_three)
+          expect(completed_duel.errors[:my_lp].size).to eq(1)
+        end
+      end
+    end
+
+    context 'when a started duel' do
+      
+    end
+  end
 end

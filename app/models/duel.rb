@@ -17,7 +17,7 @@ class Duel < ApplicationRecord
   end
 
   def winner?(user)
-    return errors.add(:winner, 'no winner as duel not completed') unless completed?
+    return errors.add(:winner?, 'no winner as duel not completed') unless completed?
     winner == user
   end
 
@@ -30,6 +30,7 @@ class Duel < ApplicationRecord
   end
 
   def my_lp(user)
+    return errors.add(:my_lp, 'life points not available as duel not completed') unless completed?
     return errors.add(:my_lp, 'user is not a player in this duel') unless player_one == user || player_two == user
     player_one == user ? player_one_lp : player_two_lp
   end

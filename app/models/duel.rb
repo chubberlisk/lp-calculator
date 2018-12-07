@@ -22,6 +22,7 @@ class Duel < ApplicationRecord
   end
 
   def opponent(user)
+    return errors.add(:opponent, 'user is not a player in this duel') unless player_one == user || player_two == user
     player_one == user ? player_two : player_one
   end
 

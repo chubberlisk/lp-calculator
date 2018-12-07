@@ -88,7 +88,7 @@ RSpec.describe Duel, type: :model do
     end
   end
 
-  describe 'my_lp' do
+  describe '#my_lp' do
     context 'when a completed duel' do
       let(:completed_duel) { build(:completed_duel, player_one: user_one, player_two: user_two) }
 
@@ -129,6 +129,31 @@ RSpec.describe Duel, type: :model do
       it 'returns an error' do
         cancelled_duel.my_lp(user_one)
         expect(cancelled_duel.errors[:my_lp].size).to eq(1)
+      end
+    end
+  end
+
+  describe '#opponent' do
+    let(:duel) { build(:duel, player_one: user_one, player_two: user_two) }
+
+    context 'when user is player one' do
+      it 'returns player two' do
+        expect(duel.opponent(user_one)).to eql(user_two)
+      end
+    end
+
+    context 'when user is player two' do
+      it 'returns player one' do
+        expect(duel.opponent(user_two)).to eql(user_one)
+      end
+    end
+
+    context 'when user is not a player in the duel' do
+      let(:user_three) { build(:user_three) }
+
+      it 'returns an error' do
+        duel.opponent(user_three)
+        expect(duel.errors[:opponent].size).to eq(1)
       end
     end
   end

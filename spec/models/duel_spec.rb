@@ -72,28 +72,18 @@ RSpec.describe Duel, type: :model do
     context 'when a started duel' do
       let(:started_duel) { build(:started_duel) }
 
-      it 'returns an error for user one' do
+      it 'returns an error' do
         started_duel.winner?(user_one)
-        expect(started_duel.errors[:winner].size).to eq(1)
-      end
-
-      it 'returns an error for user two' do
-        started_duel.winner?(user_two)
-        expect(started_duel.errors[:winner].size).to eq(1)
+        expect(started_duel.errors[:winner?].size).to eq(1)
       end
     end
 
     context 'when a cancelled duel' do
       let(:cancelled_duel) { build(:cancelled_duel) }
 
-      it 'returns an error for user one' do
+      it 'returns an error' do
         cancelled_duel.winner?(user_one)
-        expect(cancelled_duel.errors[:winner].size).to eq(1)
-      end
-
-      it 'returns an error for user two' do
-        cancelled_duel.winner?(user_two)
-        expect(cancelled_duel.errors[:winner].size).to eq(1)
+        expect(cancelled_duel.errors[:winner?].size).to eq(1)
       end
     end
   end
@@ -121,6 +111,24 @@ RSpec.describe Duel, type: :model do
           completed_duel.my_lp(user_three)
           expect(completed_duel.errors[:my_lp].size).to eq(1)
         end
+      end
+    end
+
+    context 'when a started duel' do
+      let(:started_duel) { build(:started_duel) }
+
+      it 'returns an error' do
+        started_duel.my_lp(user_one)
+        expect(started_duel.errors[:my_lp].size).to eq(1)
+      end
+    end
+
+    context 'when a cancelled duel' do
+      let(:cancelled_duel) { build(:cancelled_duel) }
+
+      it 'returns an error' do
+        cancelled_duel.my_lp(user_one)
+        expect(cancelled_duel.errors[:my_lp].size).to eq(1)
       end
     end
   end

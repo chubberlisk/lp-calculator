@@ -27,6 +27,8 @@ class Duel < ApplicationRecord
   end
 
   def opponents_lp(user)
+    return errors.add(:opponents_lp, 'life points not available as duel not completed') unless completed?
+    return errors.add(:opponents_lp, 'user is not a player in this duel') unless player_one == user || player_two == user
     player_one == user ? player_two_lp : player_one_lp
   end
 

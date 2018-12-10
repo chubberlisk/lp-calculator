@@ -11,6 +11,19 @@ class Duel < ApplicationRecord
   scope :my_completed, ->(user) { was_player_one(user).or(was_player_two(user)).where(status: :completed) }
   scope :my_cancelled, ->(user) { was_player_one(user).or(was_player_two(user)).where(status: :cancelled) }
 
+  validates :starting_lp, presence: true
+  validates :player_one, presence: true
+  validates :player_two, presence: true
+  validates :player_one_lp, numericality: { only_integer: true }, allow_nil: true
+  validates :player_two_lp, numericality: { only_integer: true }, allow_nil: true
+  validates_datetime :ended_at, allow_nil: true
+
+  with_options if: :completed? do |completed_duel|
+    completed_duel.validates :player_one_lp, presence: true
+    completed_duel.validates :player_two_lp, presence: true
+    completed_duel.validates_datetime :ended_at, presence: true, after: :created_at
+  end
+
   def winner
     return errors.add(:winner, 'no winner as duel not completed') unless completed?
     player_one_lp > player_two_lp ? player_one : player_two

@@ -5,6 +5,11 @@ RSpec.describe Duel, type: :model do
   let(:user_two) { build(:user_two) }
 
   describe '#status' do
+    it 'defaults to started' do
+      duel = create(:duel)
+      expect(duel.status).to eq('started')
+    end
+
     context 'when a completed duel' do
       let(:completed_duel) { build(:completed_duel, player_one: user_one, player_two: user_two) }
 

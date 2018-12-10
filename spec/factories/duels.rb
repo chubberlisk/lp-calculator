@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :duel do
-    status { 0 }
     starting_lp { 8000 }
     player_one_lp { nil }
     player_two_lp { nil }

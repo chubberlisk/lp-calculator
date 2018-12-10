@@ -3,10 +3,14 @@ require 'rails_helper'
 RSpec.describe Duel, type: :model do
   let(:user_one) { build(:user_one) }
   let(:user_two) { build(:user_two) }
+  let(:duel) { create(:duel) }
+
+  it 'is valid with valid attributes' do
+    expect(duel).to be_valid
+  end
 
   describe '#status' do
     it 'defaults to started' do
-      duel = create(:duel)
       expect(duel.status).to eq('started')
     end
 
@@ -32,6 +36,113 @@ RSpec.describe Duel, type: :model do
       it 'returns cancelled' do
         expect(cancelled_duel.status).to eq('cancelled')
       end
+    end
+  end
+
+  describe '#starting_lp' do
+    it 'is required' do
+      subject.valid?
+      expect(subject.errors[:starting_lp].size).to eq(1)
+    end
+  end
+
+  describe '#player_one' do
+    it 'is required' do
+      subject.valid?
+      expect(subject.errors[:player_one].size).to eq(2)
+    end
+  end
+
+  describe '#player_two' do
+    it 'is required' do
+      subject.valid?
+      expect(subject.errors[:player_two].size).to eq(2)
+    end
+  end
+
+  describe '#player_one_lp' do
+    it 'is an integer' do
+      subject.player_one_lp = 'eight thousand'
+      subject.valid?
+      expect(subject.errors[:player_one_lp].size).to eq(1)
+    end
+
+    it 'is required for a completed duel' do
+      subject.status = 'completed'
+      subject.valid?
+      expect(subject.errors[:player_one_lp].size).to eq(1)
+    end
+
+    it 'is not required for a started duel' do
+      subject.status = 'started'
+      subject.valid?
+      expect(subject.errors[:player_one_lp].size).to eq(0)
+    end
+
+    it 'is not required for a cancelled duel' do
+      subject.status = 'cancelled'
+      subject.valid?
+      expect(subject.errors[:player_one_lp].size).to eq(0)
+    end
+  end
+
+  describe '#player_two_lp' do
+    it 'is an integer' do
+      subject.player_two_lp = 'eight thousand'
+      subject.valid?
+      expect(subject.errors[:player_two_lp].size).to eq(1)
+    end
+
+    it 'is required for a completed duel' do
+      subject.status = 'completed'
+      subject.valid?
+      expect(subject.errors[:player_two_lp].size).to eq(1)
+    end
+
+    it 'is not required for a started duel' do
+      subject.status = 'started'
+      subject.valid?
+      expect(subject.errors[:player_two_lp].size).to eq(0)
+    end
+
+    it 'is not required for a cancelled duel' do
+      subject.status = 'cancelled'
+      subject.valid?
+      expect(subject.errors[:player_two_lp].size).to eq(0)
+    end
+  end
+
+  describe '#ended_at' do
+    it 'is an datetime' do
+      subject.ended_at = 'time to get a watch'
+      subject.valid?
+      expect(subject.errors[:ended_at].size).to eq(1)
+    end
+
+    it 'is required for a completed duel' do
+      subject.status = 'completed'
+      subject.valid?
+      expect(subject.errors[:ended_at].size).to eq(1)
+    end
+
+    it 'is not required for a started duel' do
+      subject.status = 'started'
+      subject.valid?
+      expect(subject.errors[:ended_at].size).to eq(0)
+    end
+
+    it 'is not required for a cancelled duel' do
+      subject.status = 'cancelled'
+      subject.valid?
+      expect(subject.errors[:ended_at].size).to eq(0)
+    end
+
+    it 'is a time after the duel started' do
+      subject.status = 'completed'
+      subject.created_at = Time.now.advance(minutes: 30)
+      subject.ended_at = Time.now
+      subject.valid?
+      expect(subject.errors[:ended_at].size).to eq(1)
     end
   end
 

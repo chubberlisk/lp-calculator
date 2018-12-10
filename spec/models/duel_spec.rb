@@ -4,6 +4,32 @@ RSpec.describe Duel, type: :model do
   let(:user_one) { build(:user_one) }
   let(:user_two) { build(:user_two) }
 
+  describe '#status' do
+    context 'when a completed duel' do
+      let(:completed_duel) { build(:completed_duel, player_one: user_one, player_two: user_two) }
+
+      it 'returns completed' do
+        expect(completed_duel.status).to eq('completed')
+      end
+    end
+
+    context 'when a started duel' do
+      let(:started_duel) { build(:started_duel, player_one: user_one, player_two: user_two) }
+
+      it 'returns started' do
+        expect(started_duel.status).to eq('started')
+      end
+    end
+
+    context 'when a cancelled duel' do
+      let(:cancelled_duel) { build(:cancelled_duel, player_one: user_one, player_two: user_two) }
+
+      it 'returns cancelled' do
+        expect(cancelled_duel.status).to eq('cancelled')
+      end
+    end
+  end
+
   describe '#winner' do
     context 'when a completed duel' do
       context 'with player one the winner' do

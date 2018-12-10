@@ -71,6 +71,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'timecop'
+  gem 'validates_timeliness'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

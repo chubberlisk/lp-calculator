@@ -202,4 +202,42 @@ RSpec.describe Duel, type: :model do
       end
     end
   end
+
+  describe '#time' do
+    context 'when a completed duel' do
+      let(:fifteen_mins_duel) { build(:fifteen_mins_duel, player_one: user_one, player_two: user_two) }
+      let(:thirty_mins_duel) { build(:thirty_mins_duel, player_one: user_one, player_two: user_two) }
+      let(:sixty_mins_duel) { build(:sixty_mins_duel, player_one: user_one, player_two: user_two) }
+
+      it 'returns the duel time for a 15 mins duel' do
+        expect(fifteen_mins_duel.time).to eq("15 mins")
+      end
+
+      it 'returns the duel time for a 30 mins duel' do
+        expect(thirty_mins_duel.time).to eq("30 mins")
+      end
+
+      it 'returns the duel time for a 60 mins duel' do
+        expect(sixty_mins_duel.time).to eq("60 mins")
+      end
+    end
+
+    context 'when a started duel' do
+      let(:started_duel) { build(:started_duel) }
+
+      it 'returns an error' do
+        started_duel.time
+        expect(started_duel.errors[:time].size).to eq(1)
+      end
+    end
+
+    context 'when a cancelled duel' do
+      let(:cancelled_duel) { build(:cancelled_duel) }
+
+      it 'returns an error' do
+        cancelled_duel.time
+        expect(cancelled_duel.errors[:time].size).to eq(1)
+      end
+    end
+  end
 end

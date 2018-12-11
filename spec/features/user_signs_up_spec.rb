@@ -5,30 +5,30 @@ RSpec.feature 'User signs up', type: :feature do
   let(:user_two) { create(:user_two) }
 
   scenario 'with valid email, username, password and password confirmation' do
-    given_a_user_is_on_the_registration_page
+    given_a_user_is_on_the_sign_up_page
     when_they_use_valid_details
     then_they_are_redirected_to_their_profile
   end
 
   scenario 'with a blank form' do
-    given_a_user_is_on_the_registration_page
+    given_a_user_is_on_the_sign_up_page
     when_they_click_sign_up
     then_they_see_all_errors
   end
 
   scenario 'with a password less than six characters long' do
-    given_a_user_is_on_the_registration_page
+    given_a_user_is_on_the_sign_up_page
     when_they_use_a_password_with_less_than_six_characters
     then_they_see_the_password_length_error
   end
 
   scenario 'with an account already signed up' do
-    given_a_user_is_on_the_registration_page
+    given_a_user_is_on_the_sign_up_page
     when_they_use_the_details_of_a_user_already_signed_up
     then_they_are_asked_to_provide_valid_details
   end
 
-  def given_a_user_is_on_the_registration_page
+  def given_a_user_is_on_the_sign_up_page
     visit new_user_registration_path
   end
 

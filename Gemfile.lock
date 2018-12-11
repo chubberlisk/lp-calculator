@@ -115,6 +115,9 @@ GEM
     font-awesome-sass (5.4.1)
       sassc (>= 1.11)
     formatador (0.2.5)
+    fuubar (2.3.2)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     guard (2.15.0)
@@ -253,6 +256,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.7.2)
@@ -330,6 +334,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   font-awesome-sass (~> 5.4.1)
+  fuubar
   guard
   guard-rspec
   jbuilder (~> 2.5)

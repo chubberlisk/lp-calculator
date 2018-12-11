@@ -41,7 +41,8 @@ gem 'bootstrap'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'serviceworker-rails'
 gem 'devise'
-gem "administrate"
+gem 'administrate'
+gem 'validates_timeliness'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,7 +72,6 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'timecop'
-  gem 'validates_timeliness'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

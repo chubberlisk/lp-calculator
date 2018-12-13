@@ -73,6 +73,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'timecop'
   gem 'fuubar'
+  gem 'chromedriver-helper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

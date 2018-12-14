@@ -71,21 +71,28 @@ confirmLpChange = (player) ->
     else
       # TODO: add AJAX call to update duel in DB
       duelId = parseInt($("#duel-id").html())
-      playerOneLp = if player == "one" then currentLp else parseInt($("p#player-one-lp").html())
-      playerTwoLp = if player == "two" then currentLp else parseInt($("p#player-two-lp").html())
-      $.ajax "/calculator/duel/#{duelId}",
-        type: 'POST'
-        dataType: 'json'
-        data: { "duel": { "player_one_lp": playerOneLp, "player_two_lp": playerTwoLp } }
-        error: (jqXHR, textStatus, errorThrown) ->
-          alert(errorThrown)
-        success: (data, textStatus, jqXHR) ->
-          if confirm "This duel has ended! Do you want to reset life points?"
-            # TODO: create a new duel
-            resetLp()
-          else
-            playPointsChange()
-            $("p#player-"+player+"-lp").animateNumbers(0, false, 1000);
+      if duelId
+        playerOneLp = if player == "one" then currentLp else parseInt($("p#player-one-lp").html())
+        playerTwoLp = if player == "two" then currentLp else parseInt($("p#player-two-lp").html())
+        $.ajax "/calculator/duel/#{duelId}",
+          type: "POST"
+          dataType: "json"
+          data: { "duel": { "player_one_lp": playerOneLp, "player_two_lp": playerTwoLp } }
+          error: (jqXHR, textStatus, errorThrown) ->
+            alert(errorThrown)
+          success: (data, textStatus, jqXHR) ->
+            if confirm "This duel has ended! Do you want to reset life points?"
+              # TODO: create a new duel
+              resetLp()
+            else
+              playPointsChange()
+              $("p#player-"+player+"-lp").animateNumbers(0, false, 1000);
+      else
+        if confirm "This duel has ended! Do you want to reset life points?"
+          resetLp()
+        else
+          playPointsChange()
+          $("p#player-"+player+"-lp").animateNumbers(0, false, 1000);
   else
     currentLp += parseInt($("span#player-"+player+"-lp-change").html())
     playPointsChange()

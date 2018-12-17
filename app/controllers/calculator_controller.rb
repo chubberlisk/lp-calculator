@@ -20,7 +20,7 @@ class CalculatorController < ApplicationController
         @error = 'Sorry, an error has occurred! Unable to create duel session.' if !@duel.save
         format.js
       else
-        @error = 'Sorry! Invalid email or password.'
+        @error = 'Sorry! Invalid email address or password.'
         format.js
       end
     end

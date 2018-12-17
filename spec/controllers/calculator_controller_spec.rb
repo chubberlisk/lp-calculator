@@ -130,7 +130,7 @@ RSpec.describe CalculatorController, type: :controller do
               starting_lp: starting_lp,
               player_two: { email: user_two.email, password: user_two.password }
             }, format: :js
-            expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
+            expect(assigns[:error]).to eq('Sorry! Invalid email address or password.')
           end
         end
 
@@ -141,7 +141,7 @@ RSpec.describe CalculatorController, type: :controller do
               starting_lp: starting_lp,
               player_two: { email: user_two.email, password: user_two.password }
             }, format: :js
-            expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
+            expect(assigns[:error]).to eq('Sorry! Invalid email address or password.')
           end
         end
       end
@@ -155,7 +155,7 @@ RSpec.describe CalculatorController, type: :controller do
                 starting_lp: starting_lp,
                 player_two: { email: nil, password: user_two.password }
               }, format: :js
-              expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
+              expect(assigns[:error]).to eq('Sorry! Invalid email address or password.')
             end
           end
 
@@ -166,7 +166,7 @@ RSpec.describe CalculatorController, type: :controller do
                 starting_lp: starting_lp,
                 player_two: { email: 'email@doesnt.exist', password: user_two.password }
               }, format: :js
-              expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
+              expect(assigns[:error]).to eq('Sorry! Invalid email address or password.')
             end
           end
         end
@@ -179,7 +179,7 @@ RSpec.describe CalculatorController, type: :controller do
                 starting_lp: starting_lp,
                 player_two: { email: user_two.email, password: nil }
               }, format: :js
-              expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
+              expect(assigns[:error]).to eq('Sorry! Invalid email address or password.')
             end
           end
 
@@ -190,7 +190,7 @@ RSpec.describe CalculatorController, type: :controller do
                 starting_lp: starting_lp,
                 player_two: { email: user_two.email, password: 'notpassword' }
               }, format: :js
-              expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
+              expect(assigns[:error]).to eq('Sorry! Invalid email address or password.')
             end
           end
         end
@@ -203,7 +203,7 @@ RSpec.describe CalculatorController, type: :controller do
             starting_lp: starting_lp,
             player_two: { email: user_one.email, password: user_one.password }
           }, format: :js
-          expect(assigns[:error]).to eq('Sorry! Invalid email or password.')
+          expect(assigns[:error]).to eq('Sorry! Invalid email address or password.')
         end
       end
     end

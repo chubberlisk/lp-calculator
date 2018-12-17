@@ -18,13 +18,19 @@ RSpec.feature 'User signs in', type: :feature do
   scenario 'with valid email and invalid password' do
     given_a_user_is_on_the_sign_in_page
     when_they_use_valid_email_and_invalid_password
-    then_they_see_the_error
+    then_they_see_an_error
   end
 
   scenario 'with valid username and invalid password' do
     given_a_user_is_on_the_sign_in_page
     when_they_use_valid_username_and_invalid_password
-    then_they_see_the_error
+    then_they_see_an_error
+  end
+
+  scenario 'with a blank form' do
+    given_a_user_is_on_the_sign_in_page
+    when_they_click_sign_in
+    then_they_see_an_error
   end
 
   def given_a_user_is_on_the_sign_in_page
@@ -55,12 +61,16 @@ RSpec.feature 'User signs in', type: :feature do
     click_on('Enter the Shadow Realm')
   end
 
+  def when_they_click_sign_in
+    click_on('Enter the Shadow Realm')    
+  end
+
   def then_they_are_redirected_to_their_profile
     expect(page).to have_current_path(user_profile_path(user_one))
     expect(page).to have_text('Hello, ' + user_one.username)
   end
 
-  def then_they_see_the_error
+  def then_they_see_an_error
     within('h3.card-title') do
       expect(page).to have_text('Sign In', exact: true)
     end

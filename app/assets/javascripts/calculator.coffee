@@ -41,7 +41,7 @@ showlpChange = (player, element, operator) ->
     lpChange += parseInt($(element).data("lp-plus"))
     lpChange = "+" + lpChange
   else if operator == "divide"
-    lpChange = "-" + (currentLp / 2)
+    lpChange = "-" + Math.round(currentLp / 2)
   else
     lpChange = "+" + currentLp
   $("div#player-"+player+"-lp-change-section").css("visibility", "visible")

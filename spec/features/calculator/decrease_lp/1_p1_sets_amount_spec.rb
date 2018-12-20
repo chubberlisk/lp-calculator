@@ -3,42 +3,49 @@ require 'rails_helper'
 RSpec.feature 'Decrease LP Step 1: Player One sets amount', type: :feature, js: true do
   scenario 'to decrease by 1000' do
     given_a_user_is_on_the_calculator_page
+    and_their_current_lp_is_eight_thousand
     when_player_one_clicks_for_minus_one_thousand
     then_they_see_one_thousand_to_decrease
   end
 
   scenario 'to decrease by 500' do
     given_a_user_is_on_the_calculator_page
+    and_their_current_lp_is_eight_thousand
     when_player_one_clicks_for_minus_five_hundred
     then_they_see_five_hundred_to_decrease
   end
 
   scenario 'to decrease by 100' do
     given_a_user_is_on_the_calculator_page
+    and_their_current_lp_is_eight_thousand
     when_player_one_clicks_for_minus_one_hundred
     then_they_see_one_hundred_to_decrease
   end
 
   scenario 'to decrease by 10' do
     given_a_user_is_on_the_calculator_page
+    and_their_current_lp_is_eight_thousand
     when_player_one_clicks_for_minus_ten
     then_they_see_ten_to_decrease
   end
 
   scenario 'to decrease by 1610' do
     given_a_user_is_on_the_calculator_page
+    and_their_current_lp_is_eight_thousand
     when_player_one_clicks_for_minus_one_thousand_six_hundred_and_ten
     then_they_see_one_thousand_six_hundred_and_ten_to_decrease
   end
 
   scenario 'to decrease by clicking -1000 button 8 times' do
     given_a_user_is_on_the_calculator_page
+    and_their_current_lp_is_eight_thousand
     when_player_one_clicks_for_minus_one_thousand_eight_times
     then_they_see_eight_thousand_to_decrease
   end
 
   scenario 'to decrease by clicking -1000 button 9 times' do
     given_a_user_is_on_the_calculator_page
+    and_their_current_lp_is_eight_thousand
     when_player_one_clicks_for_minus_one_thousand_nine_times
     then_they_see_eight_thousand_to_decrease
   end
@@ -59,6 +66,10 @@ RSpec.feature 'Decrease LP Step 1: Player One sets amount', type: :feature, js: 
 
   def given_a_user_is_on_the_calculator_page
     visit calculator_path
+  end
+
+  def and_their_current_lp_is_eight_thousand
+    page.execute_script("$('p#player-two-lp').html(8000)")
   end
 
   def and_their_life_points_is_equal_to_five_hundred

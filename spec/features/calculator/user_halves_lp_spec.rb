@@ -49,10 +49,6 @@ RSpec.feature 'User halves their LP', type: :feature, js: true do
     page.execute_script("$('p#player-one-lp').html(2000)")
   end
 
-  def and_their_current_lp_is_one_hundred_eighty_three
-    page.execute_script("$('p#player-one-lp').html(183)")
-  end
-
   def and_their_current_lp_is_nine
     page.execute_script("$('p#player-one-lp').html(9)")
   end
